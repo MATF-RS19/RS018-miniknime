@@ -25,7 +25,7 @@ bool MKNodeSpec::process_data()
     return true;
 }
 
-//ovo ne bi trbalo da se overriduje jer je isto svuda ali to ne znam da uradim
+//ovo ne bi trebalo da se overriduje jer je isto svuda ali to ne znam da uradim
 void MKNodeSpec::propagate(){
     for(const auto &output : m_outputs) {
         if(output.connectedTo!=nullptr){
