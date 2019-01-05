@@ -2,17 +2,20 @@
 #define MKOUTPUT_H
 
 class MKInput;
+class MKData;
+class MKNode;
 
 class MKOutput
 {
 public:
-    MKOutput();
+    MKOutput(MKNode* par);
     ~MKOutput();
 
     void establishConnection(MKInput& other, bool isEstablishedOnOtherEnd = false);
-    void passData(int data);
 
+    MKNode* parent;
     MKInput* connectedTo;
+    MKData* content;
 };
 
 #endif // MKOUTPUT_H

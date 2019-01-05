@@ -30,14 +30,16 @@ SOURCES += \
     mknode.cpp \
     mkinput.cpp \
     mkoutput.cpp \
-    mknodespec.cpp
+    mknodespec.cpp \
+    mkdata.cpp
 
 HEADERS += \
         mainwindow.h \
     mknode.h \
     mkinput.h \
     mkoutput.h \
-    mknodespec.h
+    mknodespec.h \
+    mkdata.h
 
 FORMS += \
         mainwindow.ui

@@ -2,13 +2,13 @@
 #define MKINPUT_H
 
 class MKOutput;
-
 class MKNode;
+class MKData;
 
 class MKInput
 {
 public:
-    MKInput();
+    MKInput(MKNode* par);
 
     ~MKInput();
 
@@ -18,11 +18,8 @@ public:
     MKOutput* connectedTo; // referenca na onog na kojeg je povezan
     MKNode* parent;
 
-    int data();
-    void setData(int newData);
+    MKData pullData();
 
-private:
-        int m_data;
 
 };
 

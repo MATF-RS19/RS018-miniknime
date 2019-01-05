@@ -10,11 +10,13 @@ class MKNode
 public:
 
     MKNode();
-    MKNode(std::vector<MKInput> inputs, std::vector<MKOutput> outputs);
+    MKNode(int ins, int outs);
     virtual ~MKNode();
 
 
     virtual bool process_data();
+
+    virtual void propagate();
 // TODO podici iz podklasa stvari koje se cesto ponavaljaju
 
 

@@ -1,9 +1,12 @@
 #include "mkoutput.h"
 #include "mkinput.h"
+#include "mkdata.h"
 
-MKOutput::MKOutput()
+MKOutput::MKOutput(MKNode* par)
 {
-
+    parent=par;
+    content=new MKData(0);
+    connectedTo=nullptr;
 }
 
 MKOutput::~MKOutput()
@@ -19,8 +22,4 @@ void MKOutput::establishConnection(MKInput& other, bool isEstablishedOnOtherEnd)
     }
 }
 
-void MKOutput::passData(int data){
-    if(connectedTo!=nullptr){
-        connectedTo->setData(data);
-    }
-}
+

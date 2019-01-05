@@ -10,7 +10,7 @@ public:
 
     virtual bool process_data() override;
 
-
+    virtual void propagate() override;
 
 };
 

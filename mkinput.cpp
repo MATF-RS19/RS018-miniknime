@@ -1,10 +1,13 @@
 #include "mkinput.h"
 #include "mkoutput.h"
 #include "mknode.h"
+#include "mkdata.h"
+#include <iostream>
 
-MKInput::MKInput()
-    : m_data (0)
+MKInput::MKInput(MKNode* par)
 {
+    parent= par;
+    connectedTo=nullptr;
 }
 
 MKInput::~MKInput()
@@ -20,11 +23,12 @@ void MKInput::establishConnection(MKOutput& other, bool isEstablishedOnOtherEnd)
     }
 }
 
-int MKInput::data(){
-    return m_data;
+//nisam siguran da ovako treba da kopiramo vrednost
+MKData MKInput::pullData(){
+    if(connectedTo!=nullptr){
+        return *(connectedTo->content);
+    }
+    return MKData(0);
 }
 
-void MKInput::setData(int newData){
-    m_data=newData;
-    //parent->process_data();
-}
+
