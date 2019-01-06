@@ -5,12 +5,17 @@
 #include "mknodespec.h"
 #include <vector>
 #include <iostream>
+#include "QFrame"
+#include "QLabel"
+#include "QPushButton"
+#include "QLayout"
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    MainWindow w;
+    QApplication a(argc, argv);    
+    MainWindow w;    
     w.show();
+
 
 
 
