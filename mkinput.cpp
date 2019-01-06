@@ -6,7 +6,7 @@
 
 MKInput::MKInput(MKNode* par)
 {
-    parent= par;
+    parent = par;
     connectedTo=nullptr;
 }
 
@@ -28,7 +28,7 @@ std::pair<bool, MKData> MKInput::pullData(){
     if(connectedTo!=nullptr){
         return std::make_pair(true, *(connectedTo->content));
     }
-    return std::make_pair(false, MKData(std::vector<std::vector<double>> (0, std::vector<double>(0, 0))));
+    return std::make_pair(false, MKData(std::vector<std::vector<double>> (1, std::vector<double>(1, 0))));
 }
 
 
