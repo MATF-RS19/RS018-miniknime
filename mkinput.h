@@ -1,6 +1,8 @@
 #ifndef MKINPUT_H
 #define MKINPUT_H
 
+#include <utility>
+
 class MKOutput;
 class MKNode;
 class MKData;
@@ -18,7 +20,7 @@ public:
     MKOutput* connectedTo; // referenca na onog na kojeg je povezan
     MKNode* parent;
 
-    MKData pullData();
+    std::pair<bool, MKData> pullData();
 
 
 };

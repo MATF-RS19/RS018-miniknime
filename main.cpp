@@ -17,8 +17,6 @@ int main(int argc, char *argv[])
     w.show();
 
 
-
-
     MKNodeSpec s1 {};
     MKNodeSpec s2 {};
 

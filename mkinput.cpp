@@ -24,11 +24,11 @@ void MKInput::establishConnection(MKOutput& other, bool isEstablishedOnOtherEnd)
 }
 
 //nisam siguran da ovako treba da kopiramo vrednost
-MKData MKInput::pullData(){
+std::pair<bool, MKData> MKInput::pullData(){
     if(connectedTo!=nullptr){
-        return *(connectedTo->content);
+        return std::make_pair(true, *(connectedTo->content));
     }
-    return MKData(0);
+    return std::make_pair(false, MKData(std::vector<std::vector<double>> (0, std::vector<double>(0, 0))));
 }
 
 

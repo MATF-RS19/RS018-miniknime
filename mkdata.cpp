@@ -1,6 +1,6 @@
 #include "mkdata.h"
 
-MKData::MKData(int data):
+MKData::MKData(std::vector<std::vector<double>> data):
     data(data)
 {
 

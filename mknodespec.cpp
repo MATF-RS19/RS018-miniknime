@@ -13,10 +13,24 @@ MKNodeSpec::MKNodeSpec()
 bool MKNodeSpec::process_data()
 {
     std::cout << "enter"<< std::endl;
-    int local_data = m_inputs[0].pullData().data;
-    ++local_data;
+    MKData local_data = m_inputs[0].pullData().second;
+    size_t n = local_data.data.size();
+    size_t m = local_data.data[0].size();
 
-    std::cout << local_data << std::endl;
+    std::cout << n << " " << m << std::endl;
+
+    for(size_t i = 0; i < n; i++)
+        for(size_t j = 0; j < m; j++)
+        {
+           ++local_data.data[i][j];
+        }
+
+
+    for(size_t i = 0; i < n; i++)
+        for(size_t j = 0; j < m; j++)
+        {
+           std::cout << local_data.data[i][j] << std::endl;
+        }
 
     //prep outputs
     m_outputs[0].content=new MKData(local_data);

@@ -4,8 +4,10 @@
 
 MKOutput::MKOutput(MKNode* par)
 {
+    //samo za proveru
+    std::vector<std::vector<double>> v (5, std::vector<double>(5 ,1));
     parent=par;
-    content=new MKData(0);
+    content=new MKData(v);
     connectedTo=nullptr;
 }
 
