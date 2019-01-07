@@ -30,9 +30,9 @@ SOURCES += \
     mknode.cpp \
     mkinput.cpp \
     mkoutput.cpp \
-    mknodespec.cpp \
     mkdata.cpp \
-    mktestnode2_2.cpp
+    mktestnode2_2.cpp \
+    mknodespec.cpp
 
 HEADERS += \
         mainwindow.h \

@@ -24,4 +24,13 @@ void MKOutput::establishConnection(MKInput& other, bool isEstablishedOnOtherEnd)
     }
 }
 
+MKData* MKOutput::data(){
+    return content;
+}
+void MKOutput::pushData(MKData* content){
+    isContentValid=true;
+    this->content=content;
+}
+
+
 

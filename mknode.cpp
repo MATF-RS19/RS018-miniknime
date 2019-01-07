@@ -29,13 +29,22 @@ bool MKNode::isReady(){
     return true;
 }
 
+void MKNode::requestProcess(){
+    for (const auto& input : m_inputs) {
+        if(input.connectedTo==nullptr || !input.connectedTo->isContentValid){
+            return;
+        }
+    }
+    process_data();
+}
+
 bool MKNode::process_data()
 {
     return false;
 }
 
 void MKNode::propagate()
-{
+{    
     auto visited=std::map<MKNode*,bool>();
     for(const auto &output : m_outputs) {
         if(output.connectedTo!=nullptr){
@@ -45,7 +54,25 @@ void MKNode::propagate()
     }
     for(auto& node : visited) {
         if(node.second==true){
-            node.first->process_data();
+            node.first->sendInvalidationPulse();
+            node.first->requestProcess();
+        }
+    }
+}
+
+//TODO change to set instead of map
+void MKNode::sendInvalidationPulse(){
+    auto visited=std::map<MKNode*,bool>();
+    for(auto &output : m_outputs) {
+        if(output.connectedTo!=nullptr){
+            output.isContentValid=false;
+            auto node=output.connectedTo->parent;
+            visited[node]=true;
+        }
+    }
+    for(auto& node : visited) {
+        if(node.second==true){
+            node.first->sendInvalidationPulse();
         }
     }
 }

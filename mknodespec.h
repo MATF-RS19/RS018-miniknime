@@ -3,10 +3,10 @@
 
 #include "mknode.h"
 
-class MKNodeSpec : public MKNode
+class MKTestNode1_1 : public MKNode
 {
 public:
-    MKNodeSpec();
+    MKTestNode1_1();
 
     virtual bool process_data() override;
 

@@ -14,7 +14,12 @@ public:
     void establishConnection(MKInput& other, bool isEstablishedOnOtherEnd = false);
 
     MKNode* parent;
-    MKInput* connectedTo;
+    MKInput* connectedTo;    
+    bool isContentValid=false;
+    MKData* data();
+    void pushData(MKData* content);
+
+private:
     MKData* content;
 };
 

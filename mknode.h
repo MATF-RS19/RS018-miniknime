@@ -19,6 +19,8 @@ public:
 
     //returns true if the node is ready to process data, false otherwise based on if all the input nodes are connected
     bool isReady();
+    void sendInvalidationPulse();
+    void requestProcess();
 
 protected:
     void propagate();

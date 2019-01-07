@@ -17,12 +17,21 @@ int main(int argc, char *argv[])
     MainWindow w;    
     w.show();
 
+    MKTestNode2_2 double1 {};
+    MKTestNode1_1 single1 {};
+    MKTestNode1_1 single2 {};
+    MKTestNode2_2 double2 {};
 
-    MKTestNode2_2 s1 {};
-    MKTestNode2_2 s2 {};
+    //    ->s1->
+    // d1        d2
+    //    ->s2->
 
-    s1.m_outputs[0].establishConnection(s2.m_inputs[0]);
+    double1.m_outputs[0].establishConnection(single1.m_inputs[0]);
+    double1.m_outputs[1].establishConnection(single2.m_inputs[0]);
+    single1.m_outputs[0].establishConnection(double2.m_inputs[0]);
+    single2.m_outputs[0].establishConnection(double2.m_inputs[1]);
     //s1.m_outputs[1].establishConnection(s2.m_inputs[1]);
-    s1.process_data();
+    double1.sendInvalidationPulse();
+    double1.process_data();
     return a.exec();
 }
