@@ -1,6 +1,7 @@
 #include "mknode.h"
 #include <vector>
 #include <iostream>
+#include <map>
 
 
 MKNode::MKNode()
@@ -19,6 +20,15 @@ MKNode::MKNode(int ins, int outs)
     }
 }
 
+bool MKNode::isReady(){
+    for (const auto& input : m_inputs) {
+        if(input.connectedTo==nullptr){
+            return false;
+        }
+    }
+    return true;
+}
+
 bool MKNode::process_data()
 {
     return false;
@@ -26,6 +36,18 @@ bool MKNode::process_data()
 
 void MKNode::propagate()
 {
+    auto visited=std::map<MKNode*,bool>();
+    for(const auto &output : m_outputs) {
+        if(output.connectedTo!=nullptr){
+            auto node=output.connectedTo->parent;
+            visited[node]=node->isReady();
+        }
+    }
+    for(auto& node : visited) {
+        if(node.second==true){
+            node.first->process_data();
+        }
+    }
 }
 
 MKNode::~MKNode()

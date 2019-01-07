@@ -3,6 +3,7 @@
 
 #include "mknode.h"
 #include "mknodespec.h"
+#include "mktestnode2_2.h"
 #include <vector>
 #include <iostream>
 #include "QFrame"
@@ -17,11 +18,11 @@ int main(int argc, char *argv[])
     w.show();
 
 
-    MKNodeSpec s1 {};
-    MKNodeSpec s2 {};
-
+    MKTestNode2_2 s1 {};
+    MKTestNode2_2 s2 {};
 
     s1.m_outputs[0].establishConnection(s2.m_inputs[0]);
+    //s1.m_outputs[1].establishConnection(s2.m_inputs[1]);
     s1.process_data();
     return a.exec();
 }

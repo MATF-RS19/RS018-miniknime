@@ -31,7 +31,8 @@ SOURCES += \
     mkinput.cpp \
     mkoutput.cpp \
     mknodespec.cpp \
-    mkdata.cpp
+    mkdata.cpp \
+    mktestnode2_2.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,7 +40,8 @@ HEADERS += \
     mkinput.h \
     mkoutput.h \
     mknodespec.h \
-    mkdata.h
+    mkdata.h \
+    mktestnode2_2.h
 
 FORMS += \
         mainwindow.ui
