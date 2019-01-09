@@ -2,6 +2,7 @@
 #define MKNODE_H
 
 #include <vector>
+#include <set>
 #include "mkinput.h"
 #include "mkoutput.h"
 
@@ -19,7 +20,7 @@ public:
 
     //returns true if the node is ready to process data, false otherwise based on if all the input nodes are connected
     bool isReady();
-    void sendInvalidationPulse();
+    void sendInvalidationPulse(std::set<MKNode*>* marked=new std::set<MKNode*>());
     void requestProcess();
 
 protected:

@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 #include <map>
+#include <set>
 
 
 MKNode::MKNode()
@@ -44,7 +45,7 @@ bool MKNode::process_data()
 }
 
 void MKNode::propagate()
-{    
+{
     auto visited=std::map<MKNode*,bool>();
     for(const auto &output : m_outputs) {
         if(output.connectedTo!=nullptr){
@@ -60,20 +61,26 @@ void MKNode::propagate()
     }
 }
 
-//TODO change to set instead of map
-void MKNode::sendInvalidationPulse(){
-    auto visited=std::map<MKNode*,bool>();
+void MKNode::sendInvalidationPulse(std::set<MKNode*>* marked){
+    marked->insert(this);
+
+//    for(const auto n : *marked){
+//        std::cout<<n<<"_";
+//    }
+//    std::cout<<std::endl;
+
+    auto visited=std::set<MKNode*>();
     for(auto &output : m_outputs) {
         if(output.connectedTo!=nullptr){
-            output.isContentValid=false;
             auto node=output.connectedTo->parent;
-            visited[node]=true;
+            if(marked->find(node) == marked->end()){
+                output.isContentValid=false;
+                visited.insert(node);
+            }
         }
     }
     for(auto& node : visited) {
-        if(node.second==true){
-            node.first->sendInvalidationPulse();
-        }
+            node->sendInvalidationPulse(marked);
     }
 }
 
