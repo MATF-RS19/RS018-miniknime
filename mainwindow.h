@@ -1,22 +1,23 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
+#include <QFrame>
 
-namespace Ui {
-class MainWindow;
-}
+QT_BEGIN_NAMESPACE
+class QDragEnterEvent;
+class QDropEvent;
+QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
+class MainWindow : public QFrame
 {
-    Q_OBJECT
-
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    MainWindow(QWidget *parent = nullptr);
 
-private:
-    Ui::MainWindow *ui;
+protected:
+    void dragEnterEvent(QDragEnterEvent *event) override;
+    void dragMoveEvent(QDragMoveEvent *event) override;
+    void dropEvent(QDropEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
 };
 
 #endif // MAINWINDOW_H
