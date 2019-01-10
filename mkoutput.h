@@ -1,8 +1,9 @@
 #ifndef MKOUTPUT_H
 #define MKOUTPUT_H
 
+#include "mkdata.h"
+
 class MKInput;
-class MKData;
 class MKNode;
 
 class MKOutput
@@ -16,11 +17,11 @@ public:
     MKNode* parent;
     MKInput* connectedTo;    
     bool isContentValid=false;
-    MKData* data();
-    void pushData(MKData* content);
+    MKData<double>* data();
+    void pushData(MKData<double>* content);
 
 private:
-    MKData* content;
+    MKData<double>* content;
 };
 
 #endif // MKOUTPUT_H

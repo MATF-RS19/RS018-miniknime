@@ -4,6 +4,7 @@
 #include "mkdata.h"
 #include <iostream>
 
+
 MKInput::MKInput(MKNode* par)
 {
     parent = par;
@@ -23,11 +24,14 @@ void MKInput::establishConnection(MKOutput& other, bool isEstablishedOnOtherEnd)
     }
 }
 
-std::pair<bool, MKData> MKInput::pullData(){
+std::pair<bool, MKData<double>> MKInput::pullData(){
     if(connectedTo!=nullptr){
         return std::make_pair(true, *(connectedTo->data()));
     }
-    return std::make_pair(false, MKData(std::vector<std::vector<double>> (1, std::vector<double>(1, 0))));
+    auto data=MKData<double>();
+    data.data=std::vector<std::vector<double>>(1, std::vector<double>(1));
+    return std::make_pair(false, data);
 }
+
 
 

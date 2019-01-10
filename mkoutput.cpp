@@ -7,7 +7,9 @@ MKOutput::MKOutput(MKNode* par)
     //samo za proveru
     std::vector<std::vector<double>> v (4, std::vector<double>(4, 3));
     parent = par;
-    content = new MKData(v);
+    auto data=new MKData<double>();
+    data->data=std::vector<std::vector<double>>(1, std::vector<double>(1));
+    content = data;
     connectedTo = nullptr;
 }
 
@@ -24,10 +26,10 @@ void MKOutput::establishConnection(MKInput& other, bool isEstablishedOnOtherEnd)
     }
 }
 
-MKData* MKOutput::data(){
+MKData<double>* MKOutput::data(){
     return content;
 }
-void MKOutput::pushData(MKData* content){
+void MKOutput::pushData(MKData<double>* content){
     isContentValid=true;
     this->content=content;
 }

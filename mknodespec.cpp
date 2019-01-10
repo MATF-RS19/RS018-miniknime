@@ -13,7 +13,7 @@ MKTestNode1_1::MKTestNode1_1()
 bool MKTestNode1_1::process_data()
 {
     std::cout << "enter single"<< std::endl;
-    MKData local_data = m_inputs[0].pullData().second;
+    MKData<double> local_data = m_inputs[0].pullData().second;
     size_t n = local_data.data.size();
     size_t m = local_data.data[0].size();
 
@@ -33,7 +33,7 @@ bool MKTestNode1_1::process_data()
     }
 
     //prep outputs
-    m_outputs[0].pushData(new MKData(local_data));
+    m_outputs[0].pushData(new MKData<double>(local_data));
 
     propagate();
     return true;
