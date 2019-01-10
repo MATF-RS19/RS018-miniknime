@@ -15,8 +15,8 @@ bool MKTestNode2_2::process_data()
 {
 
     std::cout << "enter"<< std::endl;
-    MKData local_data1 = m_inputs[0].pullData().second;
-    MKData local_data2 = m_inputs[1].pullData().second;
+    MKData<double> local_data1 = m_inputs[0].pullData().second;
+    MKData<double> local_data2 = m_inputs[1].pullData().second;
     size_t n0 = local_data1.data.size();
     size_t m0 = local_data1.data[0].size();
     size_t n1 = local_data2.data.size();
@@ -40,8 +40,8 @@ bool MKTestNode2_2::process_data()
         }
     }
 
-    m_outputs[0].pushData(new MKData(local_data1));
-    m_outputs[1].pushData(new MKData(local_data1));
+    m_outputs[0].pushData(new MKData<double>(local_data1));
+    m_outputs[1].pushData(new MKData<double>(local_data1));
 
     propagate();
     return true;

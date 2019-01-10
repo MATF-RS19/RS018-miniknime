@@ -3,12 +3,11 @@
 
 #include <vector>
 
-
+template <class T>
 class MKData
 {
 public:
-    MKData(std::vector<std::vector<double>> data);
-    std::vector<std::vector<double>> data;
+    std::vector<std::vector<T>> data;
 };
 
 #endif // MKDATA_H
