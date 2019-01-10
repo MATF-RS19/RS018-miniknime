@@ -3,9 +3,9 @@
 #include "mknode.h"
 #include "mknodespec.h"
 #include "mktestnode2_2.h"
+#include "dlib-19.16/dlib-19.16/dlib/any.h"
 #include <vector>
 #include <iostream>
-#include "dlib-19.16/dlib-19.16/dlib/any/any.h"
 #include "QFrame"
 #include "QLabel"
 #include "QPushButton"
@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     MainWindow w;    
     w.show();    
 
-    std::cout<<dlib::pi<<std::endl;
+    dlib::pi;
 
     MKTestNode2_2 double1 {};
     MKTestNode1_1 single1 {};
