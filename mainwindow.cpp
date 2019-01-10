@@ -6,27 +6,40 @@
 MainWindow::MainWindow(QWidget *parent)
     : QFrame (parent)
 {
-    setMinimumSize(600, 600);
+    setMinimumSize(400, 400);
     setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
     setAcceptDrops(true);
 
-    QLabel *boatNode = new QLabel(this);
-    boatNode->setPixmap(QPixmap(":/boat.png"));
-    boatNode->move(10, 10);
-    boatNode->show();
-    boatNode->setAttribute(Qt::WA_DeleteOnClose);
+    QLabel *linearRegression = new QLabel(this);
+    linearRegression->setPixmap(QPixmap(":/linear.png"));
+    linearRegression->move(10, 10);
+    linearRegression->show();
+    linearRegression->setAttribute(Qt::WA_DeleteOnClose);
 
-    QLabel *carNode = new QLabel(this);
-    carNode->setPixmap(QPixmap(":/car.png"));
-    carNode->move(100, 10);
-    carNode->show();
-    boatNode->setAttribute(Qt::WA_DeleteOnClose);
+    QLabel *naiveBayesClassifier = new QLabel(this);
+    naiveBayesClassifier->setPixmap(QPixmap(":/naive.png"));
+    naiveBayesClassifier->move(10, 40);
+    naiveBayesClassifier->show();
+    naiveBayesClassifier->setAttribute(Qt::WA_DeleteOnClose);
 
-    QLabel *houseNode = new QLabel(this);
-    houseNode->setPixmap(QPixmap(":/house.png"));
-    houseNode->move(10, 80);
-    houseNode->show();
-    houseNode->setAttribute(Qt::WA_DeleteOnClose);
+    QLabel *partitionClustering = new QLabel(this);
+    partitionClustering->setPixmap(QPixmap(":/partition.png"));
+    partitionClustering->move(10, 70);
+    partitionClustering->show();
+    partitionClustering->setAttribute(Qt::WA_DeleteOnClose);
+
+    QLabel *normalization = new QLabel(this);
+    normalization->setPixmap(QPixmap(":/norm.png"));
+    normalization->move(10, 100);
+    normalization->show();
+    normalization->setAttribute(Qt::WA_DeleteOnClose);
+
+    QLabel *csvReader = new QLabel(this);
+    csvReader->setPixmap(QPixmap(":/csv.png"));
+    csvReader->move(10, 130);
+    csvReader->show();
+    csvReader->setAttribute(Qt::WA_DeleteOnClose);
+
 }
 
 void MainWindow::dragEnterEvent(QDragEnterEvent *event)

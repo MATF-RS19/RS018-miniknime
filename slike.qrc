@@ -1,7 +1,9 @@
 <RCC>
     <qresource prefix="/">
-        <file>house.png</file>
-        <file>car.png</file>
-        <file>boat.png</file>
+        <file>norm.png</file>
+        <file>csv.png</file>
+        <file>partition.png</file>
+        <file>linear.png</file>
+        <file>naive.png</file>
     </qresource>
 </RCC>

@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     horizontalLayout->addWidget(new MainWindow);
     QPlainTextEdit *textArea = new QPlainTextEdit;
     textArea->setPlaceholderText("Here will be description of the algorithm you choose.");
-    textArea->setMinimumSize(600, 600);
+    textArea->setMinimumSize(400, 400);
     horizontalLayout->addWidget(textArea);
 
     mainWidget.setWindowTitle(QObject::tr("MiniKnime Proba"));
