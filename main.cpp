@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "secondwindow.h"
 #include "mknode.h"
 #include "mknodespec.h"
 #include "mktestnode2_2.h"
@@ -40,7 +41,7 @@ int main(int argc, char *argv[])
     QWidget mainWidget;
     QHBoxLayout *horizontalLayout = new QHBoxLayout(&mainWidget);
     horizontalLayout->addWidget(new MainWindow);
-    horizontalLayout->addWidget(new MainWindow);
+    horizontalLayout->addWidget(new secondwindow);
     QPlainTextEdit *textArea = new QPlainTextEdit;
     textArea->setPlaceholderText("Here will be description of the algorithm you choose.");
     textArea->setMinimumSize(400, 400);

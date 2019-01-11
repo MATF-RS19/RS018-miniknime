@@ -33,6 +33,7 @@ SOURCES += \
     mkdata.cpp \
     mktestnode2_2.cpp \
     mknodespec.cpp \
+    secondwindow.cpp
 
 
 HEADERS += \
@@ -43,6 +44,7 @@ HEADERS += \
     mknodespec.h \
     mkdata.h \
     mktestnode2_2.h \
+    secondwindow.h
 
 
 FORMS += \
