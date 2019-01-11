@@ -14,9 +14,8 @@ public:
     MKNode(int ins, int outs);
     virtual ~MKNode();
 
-    // TODO podici iz podklasa stvari koje se cesto ponavaljaju
-        std::vector<MKInput> m_inputs;
-        std::vector<MKOutput> m_outputs;
+        std::vector<MKInput<double>> m_inputs;
+        std::vector<MKOutput<double>> m_outputs;
 
     //returns true if the node is ready to process data, false otherwise based on if all the input nodes are connected
     bool isReady();
@@ -25,7 +24,7 @@ public:
 
 protected:
     void propagate();
-    virtual bool process_data();
+    virtual bool process_data() = 0;
 };
 
 

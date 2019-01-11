@@ -4,24 +4,49 @@
 #include "mkdata.h"
 #include <utility>
 
-class MKOutput;
+template <typename T> class MKOutput;
 class MKNode;
 
 
+template <typename T>
 class MKInput
 {
 public:
-    MKInput(MKNode* par);
 
-    ~MKInput();
+    MKInput(MKNode* par)
+        : parent (par)
+        , connectedTo (nullptr)
+    {
+    }
+
+    ~MKInput()
+    {
+    }
 
 
-    void establishConnection(MKOutput& other, bool establishedOnOtherEnd = false);
+    void establishConnection(MKOutput<T>& other, bool isEstablishedOnOtherEnd = false)
+    {
+        connectedTo = &other;
+        if (false == isEstablishedOnOtherEnd)
+        {
+            other.establishConnection(*this, true);
+        }
+    }
 
-    MKOutput* connectedTo; // referenca na onog na kojeg je povezan
+
+    std::pair<bool, MKData<double>> pullData(){
+        if(connectedTo!=nullptr){
+            return std::make_pair(true, *(connectedTo->data()));
+        }
+        auto data=MKData<double>();
+        data.data=std::vector<std::vector<double>>(1, std::vector<double>(1));
+        return std::make_pair(false, data);
+    }
+
+
+
+    MKOutput<T>* connectedTo;
     MKNode* parent;
-
-    std::pair<bool, MKData<double>> pullData();
 
 
 };
