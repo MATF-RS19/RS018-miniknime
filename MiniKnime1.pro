@@ -33,7 +33,8 @@ SOURCES += \
     mkdata.cpp \
     mktestnode2_2.cpp \
     mknodespec.cpp \
-    secondwindow.cpp
+    secondwindow.cpp \
+    mkdropdown.cpp
 
 
 HEADERS += \
@@ -44,11 +45,13 @@ HEADERS += \
     mknodespec.h \
     mkdata.h \
     mktestnode2_2.h \
-    secondwindow.h
+    secondwindow.h \
+    mkdropdown.h
 
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    mkdropdown.ui
 
 
 # Default rules for deployment.
