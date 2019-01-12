@@ -13,6 +13,7 @@ public:
 
     ~UIControler();
 
+    static void amendNode(QWidget *widget, MKNode *node);
     static void addNode(QWidget *widget, MKNode *node);
     static MKNode* getNode(QWidget *widget);
     static std::vector<std::pair<QWidget*, MKNode*>> activeNodes;

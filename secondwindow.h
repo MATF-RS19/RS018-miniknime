@@ -8,6 +8,7 @@ class QDragEnterEvent;
 class QDropEvent;
 QT_END_NAMESPACE
 
+class MKNode;
 
 class secondwindow : public QFrame
 {
@@ -19,6 +20,8 @@ protected:
     void dragMoveEvent(QDragMoveEvent *event) override;
     void dropEvent(QDropEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
+
+    MKNode* currentlyDraggedNode=nullptr;
 
 };
 
