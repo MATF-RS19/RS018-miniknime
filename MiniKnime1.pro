@@ -37,7 +37,9 @@ SOURCES += \
     secondwindow.cpp \
     mkpartition.cpp \
     mknaivebayes.cpp \
-    mkcsvreader.cpp
+    mkcsvreader.cpp \
+    mkdialog.cpp \
+    uicontroler.cpp
 
 
 HEADERS += \
@@ -51,11 +53,14 @@ HEADERS += \
     secondwindow.h \
     mkpartition.h \
     mknaivebayes.h \
-    mkcsvreader.h
+    mkcsvreader.h \
+    mkdialog.h \
+    uicontroler.h
 
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    mkdialog.ui
 
 
 # Default rules for deployment.
