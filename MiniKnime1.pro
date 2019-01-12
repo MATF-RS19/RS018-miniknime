@@ -37,7 +37,8 @@ SOURCES += \
     secondwindow.cpp \
     mkpartition.cpp \
     mknaivebayes.cpp \
-    mkdialog.cpp
+    mkdialog.cpp \
+    uicontroler.cpp
 
 
 HEADERS += \
@@ -51,7 +52,8 @@ HEADERS += \
     secondwindow.h \
     mkpartition.h \
     mknaivebayes.h \
-    mkdialog.h
+    mkdialog.h \
+    uicontroler.h
 
 
 FORMS += \
