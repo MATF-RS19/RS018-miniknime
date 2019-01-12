@@ -15,6 +15,7 @@ public:
     explicit MKDialog(QWidget *parent = nullptr);
     ~MKDialog();
 
+
 private slots:
     void on_outputButton_clicked();
 
@@ -22,6 +23,9 @@ private slots:
 
 private:
     Ui::MKDialog *ui;
+
+    void on_outputButton_clicked();
+    void on_inputButton_clicked();
 };
 
 #endif // MKDIALOG_H

@@ -60,7 +60,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     if(!child)
         return;
     if(QApplication::mouseButtons() & Qt::LeftButton){
-        std::cout<<"origin node type: "<<UIControler::getTypeFromOrigin(child)<<std::endl;
+        //std::cout<<"origin node type: "<<UIControler::getTypeFromOrigin(child)<<std::endl;
         draggedNodeType=UIControler::getTypeFromOrigin(child);
 
         QPixmap pixmap = *child->pixmap();
