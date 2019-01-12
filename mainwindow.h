@@ -12,6 +12,7 @@ class MainWindow : public QFrame
 {
 public:
     MainWindow(QWidget *parent = nullptr);
+    static std::string draggedNodeType;
 
 protected:
     void dragEnterEvent(QDragEnterEvent *event) override;

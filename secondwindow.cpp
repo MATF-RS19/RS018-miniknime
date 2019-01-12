@@ -1,4 +1,5 @@
 #include "secondwindow.h"
+#include "mainwindow.h"
 #include "uicontroler.h"
 #include "iostream"
 #include "mknodespec.h"
@@ -6,7 +7,7 @@
 #include <QtWidgets>
 #include <mkdialog.h>
 
-#define DEBUG
+#undef DEBUG
 
 secondwindow::secondwindow(QWidget *parent)
     : QFrame(parent)
@@ -56,9 +57,10 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
             child->setPixmap(pixmap);
         }
     }else{
+        auto node=UIControler::getNode(child);
+        std::cout<<"graph node type: "<<node->type<<std::endl;
 
 #ifdef DEBUG
-        auto node=UIControler::getNode(child);
         if(node==nullptr){
             std::cout<<"null"<<std::endl;
         }else{
@@ -129,7 +131,9 @@ void secondwindow::dropEvent(QDropEvent *event)
         newIcon->setAttribute(Qt::WA_DeleteOnClose);
 
         if(currentlyDraggedNode==nullptr){
-            UIControler::addNode(newIcon,new MKTestNode1_1());
+            auto node=new MKTestNode1_1();
+            node->type=MainWindow::draggedNodeType;
+            UIControler::addNode(newIcon, node);
         }else{
             UIControler::amendNode(newIcon,currentlyDraggedNode);
         }

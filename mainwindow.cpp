@@ -6,6 +6,7 @@
 #include <QtWidgets>
 #include <mkdialog.h>
 
+std::string MainWindow::draggedNodeType="";
 
 MainWindow::MainWindow(QWidget *parent)
     : QFrame (parent)
@@ -19,30 +20,35 @@ MainWindow::MainWindow(QWidget *parent)
     linearRegression->move(10, 10);
     linearRegression->show();
     linearRegression->setAttribute(Qt::WA_DeleteOnClose);
+    UIControler::addOriginNode(linearRegression,"lr");
 
     QLabel *naiveBayesClassifier = new QLabel(this);
     naiveBayesClassifier->setPixmap(QPixmap(":/naive.png"));
     naiveBayesClassifier->move(10, 40);
     naiveBayesClassifier->show();
     naiveBayesClassifier->setAttribute(Qt::WA_DeleteOnClose);
+    UIControler::addOriginNode(naiveBayesClassifier,"nbc");
 
     QLabel *partitionClustering = new QLabel(this);
     partitionClustering->setPixmap(QPixmap(":/partition.png"));
     partitionClustering->move(10, 70);
     partitionClustering->show();
     partitionClustering->setAttribute(Qt::WA_DeleteOnClose);
+    UIControler::addOriginNode(partitionClustering,"pc");
 
     QLabel *normalization = new QLabel(this);
     normalization->setPixmap(QPixmap(":/norm.png"));
     normalization->move(10, 100);
     normalization->show();
     normalization->setAttribute(Qt::WA_DeleteOnClose);
+    UIControler::addOriginNode(normalization,"norm");
 
     QLabel *csvReader = new QLabel(this);
     csvReader->setPixmap(QPixmap(":/csv.png"));
     csvReader->move(10, 130);
     csvReader->show();
     csvReader->setAttribute(Qt::WA_DeleteOnClose);
+    UIControler::addOriginNode(csvReader,"csvr");
 
 }
 
@@ -54,6 +60,9 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     if(!child)
         return;
     if(QApplication::mouseButtons() & Qt::LeftButton){
+        std::cout<<"origin node type: "<<UIControler::getTypeFromOrigin(child)<<std::endl;
+        draggedNodeType=UIControler::getTypeFromOrigin(child);
+
         QPixmap pixmap = *child->pixmap();
 
         QByteArray itemData;
@@ -144,7 +153,9 @@ void MainWindow::dropEvent(QDropEvent *event)
         newIcon->setPixmap(pixmap);
         newIcon->move(event->pos() - offset);
         newIcon->show();
-        newIcon->setAttribute(Qt::WA_DeleteOnClose);   
+        newIcon->setAttribute(Qt::WA_DeleteOnClose);
+        UIControler::amendOriginNode(newIcon,draggedNodeType);
+        draggedNodeType="";
 
         if(event->source() == this)
         {

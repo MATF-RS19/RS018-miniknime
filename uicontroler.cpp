@@ -5,6 +5,8 @@
 #include <iostream>
 
 std::vector<std::pair<QWidget*, MKNode*>> UIControler::activeNodes=std::vector<std::pair<QWidget*, MKNode*>>();
+std::vector<std::pair<QWidget*, std::string>> UIControler::originNodes=std::vector<std::pair<QWidget*, std::string>>();
+
 
 UIControler::UIControler(){}
 
@@ -35,5 +37,27 @@ MKNode* UIControler::getNode(QWidget *widget){
     return nullptr;
 }
 
+void UIControler::amendOriginNode(QWidget *widget, std::string type){
+    for (auto& element : UIControler::originNodes) {
+        if(element.second==type){
+            element.first=widget;
+            return;
+        }
+    }
+    std::cout<<"error trying to amend origin node"<<std::endl;
+}
 
+void UIControler::addOriginNode(QWidget *widget, std::string type){
+    UIControler::originNodes.push_back(std::make_pair(widget, type));
+}
+
+std::string UIControler::getTypeFromOrigin(QWidget *widget){
+    for (auto& element : UIControler::originNodes) {
+        if(element.first==widget){
+            return element.second;
+        }
+    }
+    std::cout<<"error looking for origin node (not found)"<<std::endl;
+    return "";
+}
 

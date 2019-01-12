@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <set>
+#include <string>
 #include "mkinput.h"
 #include "mkoutput.h"
 
@@ -14,8 +15,10 @@ public:
     MKNode(int ins, int outs);
     virtual ~MKNode();
 
-        std::vector<MKInput<double>> m_inputs;
-        std::vector<MKOutput<double>> m_outputs;
+    std::string type="";
+
+    std::vector<MKInput<double>> m_inputs;
+    std::vector<MKOutput<double>> m_outputs;
 
     //returns true if the node is ready to process data, false otherwise based on if all the input nodes are connected
     bool isReady();
