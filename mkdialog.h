@@ -16,6 +16,11 @@ public:
     ~MKDialog();
 
 
+private slots:
+    void on_outputButton_clicked();
+
+    void on_inputButton_clicked();
+
 private:
     Ui::MKDialog *ui;
 
