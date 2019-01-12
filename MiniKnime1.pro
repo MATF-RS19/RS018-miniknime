@@ -39,7 +39,8 @@ SOURCES += \
     mknaivebayes.cpp \
     mkcsvreader.cpp \
     mkdialog.cpp \
-    uicontroler.cpp
+    uicontroler.cpp \
+    csvreaderdialog.cpp
 
 
 HEADERS += \
@@ -55,12 +56,14 @@ HEADERS += \
     mknaivebayes.h \
     mkcsvreader.h \
     mkdialog.h \
-    uicontroler.h
+    uicontroler.h \
+    csvreaderdialog.h
 
 
 FORMS += \
         mainwindow.ui \
-    mkdialog.ui
+    mkdialog.ui \
+    csvreaderdialog.ui
 
 
 # Default rules for deployment.
