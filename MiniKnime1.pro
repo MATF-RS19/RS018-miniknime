@@ -36,7 +36,8 @@ SOURCES += \
     mknodespec.cpp \
     secondwindow.cpp \
     mkpartition.cpp \
-    mknaivebayes.cpp
+    mknaivebayes.cpp \
+    mkcsvreader.cpp
 
 
 HEADERS += \
@@ -49,7 +50,8 @@ HEADERS += \
     mktestnode2_2.h \
     secondwindow.h \
     mkpartition.h \
-    mknaivebayes.h
+    mknaivebayes.h \
+    mkcsvreader.h
 
 
 FORMS += \

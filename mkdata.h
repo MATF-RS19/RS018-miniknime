@@ -2,6 +2,7 @@
 #define MKDATA_H
 
 #include <vector>
+#include <string>
 #include <utility>
 
 template <class T>
@@ -17,8 +18,15 @@ public:
     {
     }
 
+    // backward compatibility
     MKData(std::vector<std::vector<T>> data)
         : data (std::move(data))
+    {
+    }
+
+    MKData(std::vector<std::string> header, std::vector<std::vector<T>> data)
+        : data (std::move(data))
+        , m_header (std::move(header))
     {
     }
 
@@ -39,6 +47,7 @@ public:
     }
 
 
+    std::vector<std::string> m_header; // head of dataset i.e vector of attribute names
     std::vector<std::vector<T>> data;
 };
 
