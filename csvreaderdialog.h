@@ -19,6 +19,7 @@ private slots:
 
     void on_browseButton_clicked();
 
+
 private:
     Ui::CsvReaderDialog *ui;
 };
