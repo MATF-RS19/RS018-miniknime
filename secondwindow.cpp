@@ -58,7 +58,7 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
         }
     }else{
         auto node=UIControler::getNode(child);
-        std::cout<<"graph node type: "<<node->type<<std::endl;
+        //std::cout<<"graph node type: "<<node->type<<std::endl;
 
 #ifdef DEBUG
         if(node==nullptr){
