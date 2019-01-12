@@ -45,7 +45,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    if((QApplication::mouseButtons() & Qt::RightButton)==0){
+    if(QApplication::mouseButtons() & Qt::LeftButton){
 
         QLabel *child = static_cast<QLabel*>(childAt(event->pos()));
         if(!child)
@@ -82,6 +82,8 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             child->show();
             child->setPixmap(pixmap);
         }
+    }else{
+        std::cout<<"right click"<<std::endl;
     }
 }
 
