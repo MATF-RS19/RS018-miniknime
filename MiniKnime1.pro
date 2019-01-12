@@ -36,7 +36,8 @@ SOURCES += \
     mknodespec.cpp \
     secondwindow.cpp \
     mkpartition.cpp \
-    mknaivebayes.cpp
+    mknaivebayes.cpp \
+    mkdialog.cpp
 
 
 HEADERS += \
@@ -49,11 +50,13 @@ HEADERS += \
     mktestnode2_2.h \
     secondwindow.h \
     mkpartition.h \
-    mknaivebayes.h
+    mknaivebayes.h \
+    mkdialog.h
 
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    mkdialog.ui
 
 
 # Default rules for deployment.

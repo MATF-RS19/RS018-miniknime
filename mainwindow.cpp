@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <iostream>
 #include <QtWidgets>
+#include <mkdialog.h>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -83,13 +84,12 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             child->setPixmap(pixmap);
         }
     }else{
-        std::cout<<"right click"<<std::endl;
+        MKDialog dialog;
+        dialog.setModal(true);
+        dialog.exec();
     }
 }
 
-void handleDrag(QMouseEvent *event){
-
-}
 
 void MainWindow::dragEnterEvent(QDragEnterEvent *event)
 {

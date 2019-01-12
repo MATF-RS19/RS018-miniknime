@@ -1,5 +1,7 @@
 #include "secondwindow.h"
 #include <QtWidgets>
+#include <mkdialog.h>
+
 
 secondwindow::secondwindow(QWidget *parent)
     : QFrame(parent)
@@ -85,40 +87,47 @@ void secondwindow::dropEvent(QDropEvent *event)
 
 void secondwindow::mousePressEvent(QMouseEvent *event)
 {
-    QLabel *child = static_cast<QLabel*>(childAt(event->pos()));
-    if(!child)
-        return;
+    if(QApplication::mouseButtons() & Qt::LeftButton){
 
-    QPixmap pixmap = *child->pixmap();
+        QLabel *child = static_cast<QLabel*>(childAt(event->pos()));
+        if(!child)
+            return;
 
-    QByteArray itemData;
-    QDataStream dataStream(&itemData, QIODevice::WriteOnly);
-    dataStream << pixmap << QPoint(event->pos() - child->pos());
+        QPixmap pixmap = *child->pixmap();
 
-    QMimeData *mimeData = new QMimeData;
-    mimeData->setData("application/x-dnditemdata", itemData);
+        QByteArray itemData;
+        QDataStream dataStream(&itemData, QIODevice::WriteOnly);
+        dataStream << pixmap << QPoint(event->pos() - child->pos());
 
-    QDrag *drag = new QDrag(this);
-    drag->setMimeData(mimeData);
-    drag->setPixmap(pixmap);
-    drag->setHotSpot(event->pos() - child->pos());
+        QMimeData *mimeData = new QMimeData;
+        mimeData->setData("application/x-dnditemdata", itemData);
 
-    QPixmap tempPixmap = pixmap;
-    QPainter painter;
-    painter.begin(&tempPixmap);
-    painter.fillRect(pixmap.rect(), QColor(127, 127, 127, 127));
-    painter.end();
+        QDrag *drag = new QDrag(this);
+        drag->setMimeData(mimeData);
+        drag->setPixmap(pixmap);
+        drag->setHotSpot(event->pos() - child->pos());
 
-    child->setPixmap(tempPixmap);
+        QPixmap tempPixmap = pixmap;
+        QPainter painter;
+        painter.begin(&tempPixmap);
+        painter.fillRect(pixmap.rect(), QColor(127, 127, 127, 127));
+        painter.end();
 
-    if(drag->exec(Qt::CopyAction | Qt::MoveAction, Qt::CopyAction) == Qt::MoveAction)
-    {
-        child->close();
-    }
-    else
-    {
-        child->show();
-        child->setPixmap(pixmap);
+        child->setPixmap(tempPixmap);
+
+        if(drag->exec(Qt::CopyAction | Qt::MoveAction, Qt::CopyAction) == Qt::MoveAction)
+        {
+            child->close();
+        }
+        else
+        {
+            child->show();
+            child->setPixmap(pixmap);
+        }
+    }else{
+        MKDialog dialog;
+        dialog.setModal(true);
+        dialog.exec();
     }
 }
 

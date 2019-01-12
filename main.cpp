@@ -15,11 +15,10 @@
 #include <iostream>
 
 
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-
-
 
     MKTestNode2_2 double1 {};
     MKTestNode1_1 single1 {};
