@@ -1,5 +1,6 @@
 #include "mkdialog.h"
 #include "ui_mkdialog.h"
+#include "uicontroler.h"
 
 #include <iostream>
 
@@ -17,7 +18,9 @@ MKDialog::~MKDialog()
 
 void MKDialog::on_outputButton_clicked()
 {
-    std::cout<<"out"<<std::endl;
+    UIControler::phase=connecting;
+    UIControler::connectionSource=&(node->m_outputs[0]);
+    close();
 }
 
 void MKDialog::on_inputButton_clicked()

@@ -22,54 +22,73 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
     QLabel *child = static_cast<QLabel*>(childAt(event->pos()));
     if(!child)
         return;
-    if(QApplication::mouseButtons() & Qt::LeftButton){
-        currentlyDraggedNode=UIControler::getNode(child);
+    if(UIControler::phase==normal){
+        if(QApplication::mouseButtons() & Qt::LeftButton){
+            currentlyDraggedNode=UIControler::getNode(child);
 
-        QPixmap pixmap = *child->pixmap();
+            QPixmap pixmap = *child->pixmap();
 
-        QByteArray itemData;
-        QDataStream dataStream(&itemData, QIODevice::WriteOnly);
-        dataStream << pixmap << QPoint(event->pos() - child->pos());
+            QByteArray itemData;
+            QDataStream dataStream(&itemData, QIODevice::WriteOnly);
+            dataStream << pixmap << QPoint(event->pos() - child->pos());
 
-        QMimeData *mimeData = new QMimeData;
-        mimeData->setData("application/x-dnditemdata", itemData);
+            QMimeData *mimeData = new QMimeData;
+            mimeData->setData("application/x-dnditemdata", itemData);
 
-        QDrag *drag = new QDrag(this);
-        drag->setMimeData(mimeData);
-        drag->setPixmap(pixmap);
-        drag->setHotSpot(event->pos() - child->pos());
+            QDrag *drag = new QDrag(this);
+            drag->setMimeData(mimeData);
+            drag->setPixmap(pixmap);
+            drag->setHotSpot(event->pos() - child->pos());
 
-        QPixmap tempPixmap = pixmap;
-        QPainter painter;
-        painter.begin(&tempPixmap);
-        painter.fillRect(pixmap.rect(), QColor(127, 127, 127, 127));
-        painter.end();
+            QPixmap tempPixmap = pixmap;
+            QPainter painter;
+            painter.begin(&tempPixmap);
+            painter.fillRect(pixmap.rect(), QColor(127, 127, 127, 127));
+            painter.end();
 
-        child->setPixmap(tempPixmap);
+            child->setPixmap(tempPixmap);
 
-        if(drag->exec(Qt::CopyAction | Qt::MoveAction, Qt::CopyAction) == Qt::MoveAction)
-        {
-            child->close();
-        }
-        else
-        {
-            child->show();
-            child->setPixmap(pixmap);
+            if(drag->exec(Qt::CopyAction | Qt::MoveAction, Qt::CopyAction) == Qt::MoveAction)
+            {
+                child->close();
+            }
+            else
+            {
+                child->show();
+                child->setPixmap(pixmap);
+            }
+        }else{
+            auto node=UIControler::getNode(child);
+            //std::cout<<"graph node type: "<<node->type<<std::endl;
+
+    #ifdef DEBUG
+            if(node==nullptr){
+                std::cout<<"null"<<std::endl;
+            }else{
+                std::cout<<node<<std::endl;
+            }
+    #endif
+            MKDialog dialog;
+            dialog.node=node;
+            dialog.setModal(true);
+            dialog.exec();
         }
     }else{
-        auto node=UIControler::getNode(child);
-        //std::cout<<"graph node type: "<<node->type<<std::endl;
-
-#ifdef DEBUG
-        if(node==nullptr){
-            std::cout<<"null"<<std::endl;
-        }else{
-            std::cout<<node<<std::endl;
+        if(UIControler::connectionSource==nullptr){
+            std::cout<<"something went wrong, connection source not set"<<std::endl;
+            return;
         }
-#endif
-        MKDialog dialog;
-        dialog.setModal(true);
-        dialog.exec();
+        auto mkIn=UIControler::getNode(child)->getFirstFreeInput();
+
+        if(mkIn!=nullptr){
+            std::cout<<"connected: "<<UIControler::connectionSource->parent->type<<"<->"<<mkIn->parent->type<<std::endl;
+            UIControler::connectionSource->establishConnection(*mkIn);
+            UIControler::connectionSource=nullptr;
+            UIControler::phase=normal;
+        }else{
+            std::cout<<"target node has no free inputs"<<std::endl;
+        }
+
     }
 }
 
@@ -155,7 +174,6 @@ void secondwindow::dropEvent(QDropEvent *event)
         event->ignore();
     }
 }
-
 
 
 

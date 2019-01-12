@@ -24,6 +24,7 @@ public:
     bool isReady();
     void sendInvalidationPulse(std::set<MKNode*>* marked=new std::set<MKNode*>());
     void requestProcess();
+    MKInput<double>* getFirstFreeInput();
 
 protected:
     void propagate();

@@ -6,7 +6,8 @@
 
 std::vector<std::pair<QWidget*, MKNode*>> UIControler::activeNodes=std::vector<std::pair<QWidget*, MKNode*>>();
 std::vector<std::pair<QWidget*, std::string>> UIControler::originNodes=std::vector<std::pair<QWidget*, std::string>>();
-
+Phase UIControler::phase=normal;
+MKOutput<double>* UIControler::connectionSource=nullptr;
 
 UIControler::UIControler(){}
 
@@ -61,3 +62,7 @@ std::string UIControler::getTypeFromOrigin(QWidget *widget){
     return "";
 }
 
+void UIControler::initializeConnectingPhase(MKOutput<double>* origin){
+    UIControler::phase=connecting;
+    UIControler::connectionSource=origin;
+}

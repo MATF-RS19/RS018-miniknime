@@ -2,6 +2,7 @@
 #define MKOUTPUT_H
 
 #include "mkdata.h"
+#include <iostream>
 
 template <typename T> class MKInput;
 class MKNode;

@@ -7,6 +7,8 @@
 #include <vector>
 #include <string>
 
+enum Phase{normal,connecting};
+
 class UIControler
 {
 public:
@@ -20,11 +22,14 @@ public:
     static void amendOriginNode(QWidget *widget, std::string type);
     static void addOriginNode(QWidget *widget, std::string type);
     static std::string getTypeFromOrigin(QWidget *widget);
+    //TODO
+    static void initializeConnectingPhase(MKOutput<double>* origin);
+
+    static Phase phase;
+    //TODO
+    static MKOutput<double>* connectionSource;
 
 private:
-
-
-    int count = 0;
     static std::vector<std::pair<QWidget*, MKNode*>> activeNodes;
     static std::vector<std::pair<QWidget*, std::string>> originNodes;
 };
