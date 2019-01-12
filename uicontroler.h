@@ -9,15 +9,17 @@
 class UIControler
 {
 public:
-    UIControler(std::vector<std::pair<QWidget*, MKNode*>>, int count);
+    UIControler();
 
     ~UIControler();
 
-    void addToMap(QWidget *widget, MKNode *node);
+    static void addNode(QWidget *widget, MKNode *node);
+    static MKNode* getNode(QWidget *widget);
+    static std::vector<std::pair<QWidget*, MKNode*>> activeNodes;
 
 private:
 
-    std::vector<std::pair<QWidget*, MKNode*>> map;
+
     int count = 0;
 };
 

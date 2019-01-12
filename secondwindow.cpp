@@ -1,4 +1,8 @@
 #include "secondwindow.h"
+#include "uicontroler.h"
+#include "iostream"
+#include "mknodespec.h"
+
 #include <QtWidgets>
 #include <mkdialog.h>
 
@@ -68,6 +72,7 @@ void secondwindow::dropEvent(QDropEvent *event)
         newIcon->move(event->pos() - offset);
         newIcon->show();
         newIcon->setAttribute(Qt::WA_DeleteOnClose);
+        UIControler::addNode(newIcon,new MKTestNode1_1());
 
         if(event->source() == this)
         {
@@ -87,12 +92,12 @@ void secondwindow::dropEvent(QDropEvent *event)
 
 void secondwindow::mousePressEvent(QMouseEvent *event)
 {
+    QLabel *child = static_cast<QLabel*>(childAt(event->pos()));
+    if(!child)
+        return;
+    std::cout<<"1"<<std::endl;
     if(QApplication::mouseButtons() & Qt::LeftButton){
-
-        QLabel *child = static_cast<QLabel*>(childAt(event->pos()));
-        if(!child)
-            return;
-
+        std::cout<<"lmb"<<std::endl;
         QPixmap pixmap = *child->pixmap();
 
         QByteArray itemData;
@@ -125,6 +130,15 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
             child->setPixmap(pixmap);
         }
     }else{
+        std::cout<<"rmb"<<std::endl;
+        auto node=UIControler::getNode(child);
+        if(node==nullptr){
+            std::cout<<"null"<<std::endl;
+            std::cout<<"ok"<<std::endl;
+        }else{
+            std::cout<<node<<std::endl;
+            std::cout<<"ok2"<<std::endl;
+        }
         MKDialog dialog;
         dialog.setModal(true);
         dialog.exec();

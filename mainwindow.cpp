@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "uicontroler.h"
+#include "mknodespec.h"
 #include <iostream>
 #include <QtWidgets>
 #include <mkdialog.h>
@@ -46,12 +48,12 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
+
+
+    QLabel *child = static_cast<QLabel*>(childAt(event->pos()));
+    if(!child)
+        return;
     if(QApplication::mouseButtons() & Qt::LeftButton){
-
-        QLabel *child = static_cast<QLabel*>(childAt(event->pos()));
-        if(!child)
-            return;
-
         QPixmap pixmap = *child->pixmap();
 
         QByteArray itemData;
@@ -83,13 +85,8 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             child->show();
             child->setPixmap(pixmap);
         }
-    }else{
-        MKDialog dialog;
-        dialog.setModal(true);
-        dialog.exec();
     }
 }
-
 
 void MainWindow::dragEnterEvent(QDragEnterEvent *event)
 {
@@ -147,7 +144,7 @@ void MainWindow::dropEvent(QDropEvent *event)
         newIcon->setPixmap(pixmap);
         newIcon->move(event->pos() - offset);
         newIcon->show();
-        newIcon->setAttribute(Qt::WA_DeleteOnClose);
+        newIcon->setAttribute(Qt::WA_DeleteOnClose);   
 
         if(event->source() == this)
         {
