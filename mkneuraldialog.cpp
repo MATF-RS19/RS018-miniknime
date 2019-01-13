@@ -12,3 +12,8 @@ mkneuraldialog::~mkneuraldialog()
 {
     delete ui;
 }
+
+void mkneuraldialog::on_connectButton_clicked()
+{
+
+}

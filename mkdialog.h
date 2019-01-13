@@ -20,7 +20,8 @@ public:
 
 private slots:
     void on_outputButton_clicked();
-    void on_inputButton_clicked();
+
+    void on_connectButton_clicked();
 
 private:
     Ui::MKDialog *ui;

@@ -20,12 +20,9 @@ void CsvReaderDialog::on_browseButton_clicked()
     ui->lineEdit->setText(s);
 }
 
-//void CsvReaderDialog::on_inputButton_clicked()
-//{
 
-//}
 
-//void CsvReaderDialog::on_outputButton_clicked()
-//{
+void CsvReaderDialog::on_connectButton_clicked()
+{
 
-//}
+}

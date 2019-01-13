@@ -23,7 +23,7 @@ void MKDialog::on_outputButton_clicked()
     close();
 }
 
-void MKDialog::on_inputButton_clicked()
+void MKDialog::on_connectButton_clicked()
 {
 
 }
