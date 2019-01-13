@@ -47,8 +47,8 @@ public:
         // This checks for a trailing comma with no data after it.
         if (!lineStream && cell.empty())
         {
-            // If there was a trailing comma then add an empty element.
-            m_data.push_back("");
+            // adding zero for trailing comma
+            m_data.push_back("0");
         }
     }
 

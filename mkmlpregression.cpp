@@ -43,7 +43,7 @@ void MKMLPRegression::trainNet(long perceptronsInInputLayer,
                          momentum);
 
     // training neural net
-    for (auto x : X) {
+    for (const auto& x : X) {
         for (unsigned long i = 1; i < x.size(); ++i) {
             m(i-1) = x[i];
         }

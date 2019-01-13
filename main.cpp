@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "secondwindow.h"
 #include "mknormalization.h"
+#include "mkknearestneighbor.h"
 #include "mknode.h"
 #include "mkmlpregression.h"
 #include "mkcsvreader.h"
@@ -46,22 +47,28 @@ int main(int argc, char *argv[])
 // example workflow
 // --------------------------------------------------
     MKCSVReader reader {};
-    reader.readFromCSV("datasets/auto-mpg.csv");
+    reader.readFromCSV("../../numeric_iris.csv");
 
-    MKNormalization norm {};
-    reader.m_outputs[0].establishConnection(norm.m_inputs[0]);
+    MKKNearestNeighbor knn {};
+    std::vector<double> xs {6.5, 3, 5.4, 2.2, 2};
+    reader.m_outputs[0].establishConnection(knn.m_inputs[0]);
+    knn.classify(3, 4, xs);
 
-    norm.process_data();
 
-    MKPartition part {};
-    norm.m_outputs[0].establishConnection((part.m_inputs[0]));
-    part.process_data();
+   // MKNormalization norm {};
+   // reader.m_outputs[0].establishConnection(norm.m_inputs[0]);
 
-    MKMLPRegression net {};
-    part.m_outputs[0].establishConnection(net.m_inputs[0]);
-    part.m_outputs[1].establishConnection(net.m_inputs[1]);
+   // norm.process_data();
 
-    net.trainNet(6, 3, 3);
+   // MKPartition part {};
+   // norm.m_outputs[0].establishConnection((part.m_inputs[0]));
+   // part.process_data();
+
+   // MKMLPRegression net {};
+   // part.m_outputs[0].establishConnection(net.m_inputs[0]);
+   // part.m_outputs[1].establishConnection(net.m_inputs[1]);
+
+   // net.trainNet(6, 3, 3);
 
 // --------------------------------------------------
 

@@ -46,7 +46,8 @@ SOURCES += \
     mknormalizationdialog.cpp \
     mkneuraldialog.cpp \
     mkmlpregression.cpp \
-    dlib-19.16/dlib-19.16/dlib/all/source.cpp
+    dlib-19.16/dlib-19.16/dlib/all/source.cpp \
+    mkknearestneighbor.cpp
 
 
 HEADERS += \
@@ -68,7 +69,8 @@ HEADERS += \
     mkline.h \
     mknormalizationdialog.h \
     mkneuraldialog.h \
-    mkmlpregression.h
+    mkmlpregression.h \
+    mkknearestneighbor.h
 
 
 FORMS += \
