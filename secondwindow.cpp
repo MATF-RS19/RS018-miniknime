@@ -3,6 +3,7 @@
 #include "uicontroler.h"
 #include "iostream"
 #include "mknodespec.h"
+#include "mkcsvreader.h"
 
 
 #include <QtWidgets>
@@ -81,6 +82,7 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
             std::cout<<"graph node type: "<<node->type<<std::endl;
             if(node->type == "csvr")
             {
+                node = new MKCSVReader;
                 CsvReaderDialog dialog;
                 dialog.node = node;
                 dialog.setModal(true);
