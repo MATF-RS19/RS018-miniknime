@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 // example workflow
 // --------------------------------------------------
     MKCSVReader reader {};
-    reader.readFromCSV("./datasets/auto-mpg.csv");
+    reader.readFromCSV("datasets/auto-mpg.csv");
 
     MKNormalization norm {};
     reader.m_outputs[0].establishConnection(norm.m_inputs[0]);
