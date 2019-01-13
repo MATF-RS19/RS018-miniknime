@@ -53,7 +53,7 @@ protected:
         auto pixmap = new QPixmap(400,400);
         pixmap->fill(Qt::white);
         QPainter PixmapPainter(pixmap);
-        QPen pen(Qt::red);
+        QPen pen(Qt::black);
         pen.setWidth(5);
         PixmapPainter.setPen(pen);
         for(const auto* line : UIControler::activeLines){

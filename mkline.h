@@ -10,7 +10,7 @@ public:
     int endX;
     int endY;
 private:
-    static const int outputXOffset=155;
+    static const int outputXOffset=227;
     static const int perIOPositionYOffest=5;
 };
 

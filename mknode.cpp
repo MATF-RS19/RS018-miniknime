@@ -87,6 +87,7 @@ void MKNode::sendInvalidationPulse(std::set<MKNode*>* marked){
 
 MKInput<double>* MKNode::getFirstFreeInput(){
      for(auto &input : m_inputs) {
+         std::cout<<input.connectedTo<<std::endl;
          if(input.connectedTo==nullptr){
              return &input;
          }
