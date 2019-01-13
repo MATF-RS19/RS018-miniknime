@@ -40,7 +40,8 @@ SOURCES += \
     mkcsvreader.cpp \
     mkdialog.cpp \
     uicontroler.cpp \
-    csvreaderdialog.cpp
+    csvreaderdialog.cpp \
+    mknormalization.cpp
 
 
 HEADERS += \
@@ -57,7 +58,8 @@ HEADERS += \
     mkcsvreader.h \
     mkdialog.h \
     uicontroler.h \
-    csvreaderdialog.h
+    csvreaderdialog.h \
+    mknormalization.h
 
 
 FORMS += \
