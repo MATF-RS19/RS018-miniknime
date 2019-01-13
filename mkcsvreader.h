@@ -15,6 +15,7 @@ public:
 
     bool readFromCSV(const std::string path);
 
+
 };
 
 

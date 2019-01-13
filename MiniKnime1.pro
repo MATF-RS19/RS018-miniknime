@@ -44,7 +44,9 @@ SOURCES += \
     mknormalization.cpp \
     mkline.cpp \
     mknormalizationdialog.cpp \
-    mkneuraldialog.cpp
+    mkneuraldialog.cpp \
+    mkmlpregression.cpp \
+    dlib-19.16/dlib-19.16/dlib/all/source.cpp
 
 
 HEADERS += \
@@ -65,7 +67,8 @@ HEADERS += \
     mknormalization.h \
     mkline.h \
     mknormalizationdialog.h \
-    mkneuraldialog.h
+    mkneuraldialog.h \
+    mkmlpregression.h
 
 
 FORMS += \
@@ -85,7 +88,9 @@ RESOURCES += \
     slike.qrc \
     slike.qrc
 
+LIBS += -pthread -lX11
 
-
+DISTFILES += \
+    ../../auto-mpg.csv
 
 

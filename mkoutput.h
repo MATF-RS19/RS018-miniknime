@@ -59,6 +59,16 @@ public:
         this->content=content;
     }
 
+    void printData()
+    {
+        for (int i = 0; i < content->data.size(); ++i) {
+            for (int j = 0; j < content->data[i].size(); ++j) {
+                std::cout << content->data[i][j] << " ";
+            }
+            std::cout << "\n";
+        }
+    }
+
 
 
     MKNode* parent;

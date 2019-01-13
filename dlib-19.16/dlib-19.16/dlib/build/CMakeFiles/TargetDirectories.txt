@@ -1,0 +1,9 @@
+/home/petar/Desktop/RS_PROJEKAT_GUNNERA/MiniKnime1/dlib-19.16/dlib-19.16/dlib/build/CMakeFiles/edit_cache.dir
+/home/petar/Desktop/RS_PROJEKAT_GUNNERA/MiniKnime1/dlib-19.16/dlib-19.16/dlib/build/CMakeFiles/package_source.dir
+/home/petar/Desktop/RS_PROJEKAT_GUNNERA/MiniKnime1/dlib-19.16/dlib-19.16/dlib/build/CMakeFiles/rebuild_cache.dir
+/home/petar/Desktop/RS_PROJEKAT_GUNNERA/MiniKnime1/dlib-19.16/dlib-19.16/dlib/build/CMakeFiles/package.dir
+/home/petar/Desktop/RS_PROJEKAT_GUNNERA/MiniKnime1/dlib-19.16/dlib-19.16/dlib/build/CMakeFiles/install/local.dir
+/home/petar/Desktop/RS_PROJEKAT_GUNNERA/MiniKnime1/dlib-19.16/dlib-19.16/dlib/build/CMakeFiles/install/strip.dir
+/home/petar/Desktop/RS_PROJEKAT_GUNNERA/MiniKnime1/dlib-19.16/dlib-19.16/dlib/build/CMakeFiles/list_install_components.dir
+/home/petar/Desktop/RS_PROJEKAT_GUNNERA/MiniKnime1/dlib-19.16/dlib-19.16/dlib/build/CMakeFiles/dlib.dir
+/home/petar/Desktop/RS_PROJEKAT_GUNNERA/MiniKnime1/dlib-19.16/dlib-19.16/dlib/build/CMakeFiles/install.dir
