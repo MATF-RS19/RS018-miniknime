@@ -1,5 +1,6 @@
 #include "uicontroler.h"
 #include <mknode.h>
+#include <QPlainTextEdit>
 #include <QWidget>
 #include <vector>
 #include <iostream>
@@ -8,6 +9,7 @@ std::vector<std::pair<QWidget*, MKNode*>> UIControler::activeNodes=std::vector<s
 std::vector<std::pair<QWidget*, std::string>> UIControler::originNodes=std::vector<std::pair<QWidget*, std::string>>();
 std::set<MKLine*> UIControler::activeLines=std::set<MKLine*>();
 secondwindow* UIControler::secondWin=nullptr;
+QPlainTextEdit* UIControler::thirdWin=nullptr;
 
 Phase UIControler::phase=normal;
 MKOutput<double>* UIControler::connectionSource=nullptr;
@@ -91,6 +93,10 @@ void UIControler::destroyLine(MKLine* line){
 
 void UIControler::setSecondWindow(secondwindow* sw){
     secondWin=sw;
+}
+
+void UIControler::setThirdWindow(QPlainTextEdit *pte){
+    thirdWin=pte;
 }
 
 
