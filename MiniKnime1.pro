@@ -42,7 +42,9 @@ SOURCES += \
     uicontroler.cpp \
     csvreaderdialog.cpp \
     mknormalization.cpp \
-    mkline.cpp
+    mkline.cpp \
+    mknormalizationdialog.cpp \
+    mkneuraldialog.cpp
 
 
 HEADERS += \
@@ -61,13 +63,17 @@ HEADERS += \
     uicontroler.h \
     csvreaderdialog.h \
     mknormalization.h \
-    mkline.h
+    mkline.h \
+    mknormalizationdialog.h \
+    mkneuraldialog.h
 
 
 FORMS += \
         mainwindow.ui \
     mkdialog.ui \
-    csvreaderdialog.ui
+    csvreaderdialog.ui \
+    mknormalizationdialog.ui \
+    mkneuraldialog.ui
 
 
 # Default rules for deployment.

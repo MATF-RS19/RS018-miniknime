@@ -25,7 +25,7 @@ void MKDialog::on_outputButton_clicked()
     UIControler::secondWin->drawLines();
 }
 
-void MKDialog::on_inputButton_clicked()
+void MKDialog::on_connectButton_clicked()
 {
 
 }
