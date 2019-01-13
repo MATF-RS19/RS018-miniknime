@@ -20,13 +20,13 @@ public:
 
     // backward compatibility
     MKData(std::vector<std::vector<T>> data)
-        : data (std::move(data))
+        : data (data)
     {
     }
 
     MKData(std::vector<std::string> header, std::vector<std::vector<T>> data)
-        : data (std::move(data))
-        , m_header (std::move(header))
+        : data (data)
+        , m_header (header)
     {
     }
 

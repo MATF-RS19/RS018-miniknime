@@ -100,10 +100,14 @@ bool MKCSVReader::readFromCSV(const std::string path)
     }
 
     MKData<double> local_data (local_header, X);
-    m_outputs[0].pushData(&local_data);
+    m_outputs[0].pushData(new MKData<double>(local_data));
+
+    propagate();
 
     return true;
 }
+
+
 
 
 

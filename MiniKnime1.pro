@@ -44,7 +44,8 @@ SOURCES += \
     mknormalization.cpp \
     mkline.cpp \
     mknormalizationdialog.cpp \
-    mkneuraldialog.cpp
+    mkneuraldialog.cpp \
+    mkmlpregression.cpp
 
 
 HEADERS += \
@@ -65,7 +66,8 @@ HEADERS += \
     mknormalization.h \
     mkline.h \
     mknormalizationdialog.h \
-    mkneuraldialog.h
+    mkneuraldialog.h \
+    mkmlpregression.h
 
 
 FORMS += \

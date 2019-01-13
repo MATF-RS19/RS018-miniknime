@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "secondwindow.h"
+#include "mknormalization.h"
 #include "mknode.h"
+#include "mkcsvreader.h"
+#include "mkpartition.h"
 #include "mknodespec.h"
 #include "mktestnode2_2.h"
 #include "uicontroler.h"
@@ -46,6 +49,21 @@ void localTest001(){
     //    ->s1->
     // d1        d2
     //    ->s2->
+
+    MKCSVReader reader {};
+    reader.readFromCSV("../../auto-mpg.csv");
+
+    MKNormalization norm {};
+    reader.m_outputs[0].establishConnection(norm.m_inputs[0]);
+    reader.m_outputs[0].printData();
+
+    norm.process_data();
+    norm.m_outputs[0].printData();
+
+    MKPartition part {};
+    norm.m_outputs[0].establishConnection((part.m_inputs[0]));
+    part.process_data();
+    part.m_outputs[1].printData();
 
     MKTestNode2_2 double1 {};
     MKTestNode1_1 single1 {};

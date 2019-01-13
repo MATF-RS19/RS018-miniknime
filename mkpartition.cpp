@@ -24,12 +24,13 @@ bool MKPartition::process_data()
     int cross_point = std::rint((7.0 / 10) * local_data.data.size());
     auto cross_iter = local_data.data.begin() + cross_point;
 
+//    std::vector<std::vector<double>> tmp1 (local_data.data.begin(), cross_iter);
+//    std::vector<std::vector<double>> tmp2 (cross_iter, local_data.data.end());
     MKData<double> partition1 (std::vector<std::vector<double>> (local_data.data.begin(), cross_iter));
     MKData<double> partition2 (std::vector<std::vector<double>> (cross_iter, local_data.data.end()));
 
-
-    m_outputs[0].pushData(&partition1);
-    m_outputs[1].pushData(&partition2);
+    m_outputs[0].pushData(new MKData<double>(partition1));
+    m_outputs[1].pushData(new MKData<double>(partition2));
 
     propagate();
 
