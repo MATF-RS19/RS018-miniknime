@@ -19,9 +19,9 @@ private slots:
 
     void on_browseButton_clicked();
 
-    void on_inputButton_clicked();
+    void on_connectButton_clicked();
 
-    void on_outputButton_clicked();
+
 
 private:
     Ui::CsvReaderDialog *ui;
