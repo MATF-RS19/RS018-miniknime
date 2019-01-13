@@ -4,8 +4,13 @@
 #include "iostream"
 #include "mknodespec.h"
 
+
 #include <QtWidgets>
+#include <csvreaderdialog.h>
 #include <mkdialog.h>
+#include <mkneuraldialog.h>
+#include <mknormalizationdialog.h>
+
 
 #undef DEBUG
 
@@ -73,7 +78,36 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
             }
         }else{
             auto node=UIControler::getNode(child);
-            //std::cout<<"graph node type: "<<node->type<<std::endl;
+            std::cout<<"graph node type: "<<node->type<<std::endl;
+            if(node->type == "csvr")
+            {
+                CsvReaderDialog dialog;
+                dialog.node = node;
+                dialog.setModal(true);
+                dialog.exec();
+            }
+            else if (node->type == "nn")
+            {
+                mkneuraldialog dialog;
+                dialog.node = node;
+                dialog.setModal(true);
+                dialog.exec();
+            }
+            else if(node->type == "pn")
+            {
+                MKDialog dialog;
+                dialog.node=node;
+                dialog.setModal(true);
+                dialog.exec();
+            }
+            else if(node->type == "norm")
+            {
+                mknormalizationdialog dialog;
+                dialog.node = node;
+                dialog.setModal(true);
+                dialog.exec();
+            }
+
 
     #ifdef DEBUG
             if(node==nullptr){
@@ -82,10 +116,7 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
                 std::cout<<node<<std::endl;
             }
     #endif
-            MKDialog dialog;
-            dialog.node=node;
-            dialog.setModal(true);
-            dialog.exec();
+
         }
     }else{
         if(QApplication::mouseButtons() & Qt::RightButton){

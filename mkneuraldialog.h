@@ -1,6 +1,7 @@
 #ifndef MKNEURALDIALOG_H
 #define MKNEURALDIALOG_H
 
+#include <mknode.h>
 #include <QDialog>
 
 namespace Ui {
@@ -14,6 +15,10 @@ class mkneuraldialog : public QDialog
 public:
     explicit mkneuraldialog(QWidget *parent = nullptr);
     ~mkneuraldialog();
+    MKNode* node=nullptr;
+
+private slots:
+    void on_connectButton_clicked();
 
 private:
     Ui::mkneuraldialog *ui;

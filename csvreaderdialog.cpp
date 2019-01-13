@@ -1,5 +1,6 @@
 #include "csvreaderdialog.h"
 #include "ui_csvreaderdialog.h"
+#include "secondwindow.h"
 #include <QFileDialog>
 
 CsvReaderDialog::CsvReaderDialog(QWidget *parent) :
@@ -20,7 +21,11 @@ void CsvReaderDialog::on_browseButton_clicked()
     ui->lineEdit->setText(s);
 }
 
+
 void CsvReaderDialog::on_connectButton_clicked()
 {
-
+    UIControler::phase=connecting;
+    UIControler::connectionSource=&(node->m_outputs[0]);
+    close();
+    UIControler::secondWin->drawLines();
 }
