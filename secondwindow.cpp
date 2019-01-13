@@ -31,11 +31,11 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
             currentlyDraggedNode=UIControler::getNode(child);
             currentlyDraggedNode->sendInvalidationPulse();
 
-            for(auto input:currentlyDraggedNode->m_inputs){
+            for(auto& input:currentlyDraggedNode->m_inputs){
                 UIControler::destroyLine(input.connectedLine);
-                input.breakConnection();
+                input.breakConnection();                
             }
-            for(auto output:currentlyDraggedNode->m_outputs){
+            for(auto& output:currentlyDraggedNode->m_outputs){
                 UIControler::destroyLine(output.connectedLine);
                 output.breakConnection();
             }
