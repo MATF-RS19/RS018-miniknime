@@ -4,6 +4,7 @@
 #include "iostream"
 #include "mknodespec.h"
 #include "mkcsvreader.h"
+#include "mkknn.h"
 
 
 #include <QtWidgets>
@@ -105,6 +106,13 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
             else if(node->type == "norm")
             {
                 mknormalizationdialog dialog;
+                dialog.node = node;
+                dialog.setModal(true);
+                dialog.exec();
+            }
+            else if(node->type == "knn")
+            {
+                MKKnn dialog;
                 dialog.node = node;
                 dialog.setModal(true);
                 dialog.exec();

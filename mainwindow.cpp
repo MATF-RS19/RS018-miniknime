@@ -15,12 +15,12 @@ MainWindow::MainWindow(QWidget *parent)
     setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
     setAcceptDrops(true);
 
-    QLabel *mlpRegression = new QLabel(this);
-    mlpRegression->setPixmap(QPixmap(":/mlp.png"));
-    mlpRegression->move(10, 10);
-    mlpRegression->show();
-    mlpRegression->setAttribute(Qt::WA_DeleteOnClose);
-    UIControler::addOriginNode(mlpRegression,"mlpr");
+    QLabel *KNN = new QLabel(this);
+    KNN->setPixmap(QPixmap(":/mlp.png"));
+    KNN->move(10, 10);
+    KNN->show();
+    KNN->setAttribute(Qt::WA_DeleteOnClose);
+    UIControler::addOriginNode(KNN, "knn");
 
     QLabel *neuralNetwork = new QLabel(this);
     neuralNetwork->setPixmap(QPixmap(":/neural.png"));
