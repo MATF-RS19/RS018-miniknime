@@ -27,7 +27,9 @@ int main(int argc, char *argv[])
     QWidget mainWidget;
     QHBoxLayout *horizontalLayout = new QHBoxLayout(&mainWidget);
     horizontalLayout->addWidget(new MainWindow);
-    horizontalLayout->addWidget(new secondwindow);
+    auto sw=new secondwindow;
+    UIControler::setSecondWindow(sw);
+    horizontalLayout->addWidget(sw);
     QPlainTextEdit *textArea = new QPlainTextEdit;
     textArea->setPlaceholderText("Here will be description of the algorithm you choose.");
     textArea->setMinimumSize(400, 400);

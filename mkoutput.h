@@ -6,6 +6,7 @@
 
 template <typename T> class MKInput;
 class MKNode;
+class MKLine;
 
 template <typename T>
 class MKOutput
@@ -27,7 +28,7 @@ public:
 
     void establishConnection(MKInput<T>& other, bool isEstablishedOnOtherEnd = false)
     {
-        if (false == isEstablishedOnOtherEnd){
+        if (connectedTo!=nullptr && false == isEstablishedOnOtherEnd){
             breakConnection();
         }
         connectedTo = &other;
@@ -39,13 +40,13 @@ public:
 
     void breakConnection(bool isEstablishedOnOtherEnd = false)
     {
-
         if(connectedTo!=nullptr){
             if (isEstablishedOnOtherEnd==false)
             {
                 connectedTo->breakConnection(true);
             }
-            connectedTo=nullptr;
+            connectedTo=nullptr;            
+            connectedLine=nullptr;
         }
     }
 
@@ -64,6 +65,7 @@ public:
     MKInput<T>* connectedTo;
     int positionIndex;
     bool isContentValid=false;
+    MKLine* connectedLine=nullptr;
 
 private:
     MKData<T>* content;

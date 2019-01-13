@@ -1,4 +1,5 @@
 #include "mkdialog.h"
+#include "secondwindow.h"
 #include "ui_mkdialog.h"
 #include "uicontroler.h"
 
@@ -19,8 +20,9 @@ MKDialog::~MKDialog()
 void MKDialog::on_outputButton_clicked()
 {
     UIControler::phase=connecting;
-    UIControler::connectionSource=&(node->m_outputs[0]);
+    UIControler::connectionSource=&(node->m_outputs[0]);    
     close();
+    UIControler::secondWin->drawLines();
 }
 
 void MKDialog::on_inputButton_clicked()

@@ -6,8 +6,11 @@
 #include <mknode.h>
 #include <vector>
 #include <string>
+#include <set>
+#include "mkline.h"
 
 enum Phase{normal,connecting};
+class secondwindow;
 
 class UIControler
 {
@@ -26,13 +29,21 @@ public:
     //TODO
     static void initializeConnectingPhase(MKOutput<double>* origin);
 
+    static void addLine(MKLine*);
+    static void destroyLine(MKLine*);
+
     static Phase phase;
     //TODO
     static MKOutput<double>* connectionSource;
+    static std::set<MKLine*> activeLines;
+
+    static secondwindow* secondWin;
+    static void setSecondWindow(secondwindow* sw);
 
 private:
     static std::vector<std::pair<QWidget*, MKNode*>> activeNodes;
     static std::vector<std::pair<QWidget*, std::string>> originNodes;
+
 };
 
 #endif // UICONTROLER_H

@@ -21,12 +21,24 @@ secondwindow::secondwindow(QWidget *parent)
 
 void secondwindow::mousePressEvent(QMouseEvent *event)
 {
-    QLabel *child = static_cast<QLabel*>(childAt(event->pos()));
-    if(!child)
-        return;
+    drawLines();
+
     if(UIControler::phase==normal){
+        QLabel *child = static_cast<QLabel*>(childAt(event->pos()));
+        if(!child)
+            return;
         if(QApplication::mouseButtons() & Qt::LeftButton){
             currentlyDraggedNode=UIControler::getNode(child);
+            currentlyDraggedNode->sendInvalidationPulse();
+
+            for(auto input:currentlyDraggedNode->m_inputs){
+                UIControler::destroyLine(input.connectedLine);
+                input.breakConnection();
+            }
+            for(auto output:currentlyDraggedNode->m_outputs){
+                UIControler::destroyLine(output.connectedLine);
+                output.breakConnection();
+            }
 
             QPixmap pixmap = *child->pixmap();
 
@@ -76,6 +88,16 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
             dialog.exec();
         }
     }else{
+        if(QApplication::mouseButtons() & Qt::RightButton){
+            std::cout<<"exited connecting mode"<<std::endl;
+            UIControler::phase=normal;
+            return;
+        }
+
+        QLabel *child = static_cast<QLabel*>(childAt(event->pos()));
+        if(!child)
+            return;
+
         if(UIControler::connectionSource==nullptr){
             std::cout<<"something went wrong, connection source not set"<<std::endl;
             return;
@@ -91,11 +113,11 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
             std::cout<<"connected: "<<UIControler::connectionSource->parent->type<<"<->"<<mkIn->parent->type<<std::endl;
             auto source=UIControler::getWidget(UIControler::connectionSource->parent);
 
-            paintLines(source,child,UIControler::connectionSource->positionIndex,mkIn->positionIndex);
+            appendLine(source,child,UIControler::connectionSource,mkIn);
             UIControler::connectionSource->establishConnection(*mkIn);
             UIControler::connectionSource=nullptr;
-            UIControler::phase=normal;            
-
+            UIControler::phase=normal;
+            drawLines();
         }else{
             std::cout<<"target node has no free inputs"<<std::endl;
         }
@@ -143,7 +165,7 @@ void secondwindow::dragMoveEvent(QDragMoveEvent *event)
 }
 
 void secondwindow::dropEvent(QDropEvent *event)
-{
+{    
     if(event->mimeData()->hasFormat("application/x-dnditemdata"))
     {
         QByteArray itemData = event->mimeData()->data("application/x-dnditemdata");
@@ -183,11 +205,23 @@ void secondwindow::dropEvent(QDropEvent *event)
     {
         event->ignore();
     }
+    drawLines();
 }
 
+void secondwindow::changeEvent(QEvent*)
+{
+    drawLines();
+}
 
+void secondwindow::focusInEvent(QFocusEvent*)
+{
+    drawLines();
+}
 
-
+void secondwindow::focusOutEvent(QFocusEvent*)
+{
+    drawLines();
+}
 
 
 

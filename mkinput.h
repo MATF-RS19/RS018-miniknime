@@ -3,9 +3,11 @@
 
 #include "mkdata.h"
 #include <utility>
+#include <iostream>
 
 template <typename T> class MKOutput;
 class MKNode;
+class MKLine;
 
 
 template <typename T>
@@ -27,7 +29,7 @@ public:
 
     void establishConnection(MKOutput<T>& other, bool isEstablishedOnOtherEnd = false)
     {
-        if (false == isEstablishedOnOtherEnd){
+        if (connectedTo !=nullptr && false == isEstablishedOnOtherEnd){
             breakConnection();
         }
         connectedTo = &other;
@@ -45,6 +47,7 @@ public:
                 connectedTo->breakConnection(true);
             }
             connectedTo=nullptr;
+            connectedLine=nullptr;
         }
     }
 
@@ -63,6 +66,7 @@ public:
     MKOutput<T>* connectedTo;
     MKNode* parent;
     int positionIndex;
+    MKLine* connectedLine=nullptr;
 };
 
 #endif // MKINPUT_H

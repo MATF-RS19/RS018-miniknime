@@ -6,6 +6,9 @@
 
 std::vector<std::pair<QWidget*, MKNode*>> UIControler::activeNodes=std::vector<std::pair<QWidget*, MKNode*>>();
 std::vector<std::pair<QWidget*, std::string>> UIControler::originNodes=std::vector<std::pair<QWidget*, std::string>>();
+std::set<MKLine*> UIControler::activeLines=std::set<MKLine*>();
+secondwindow* UIControler::secondWin=nullptr;
+
 Phase UIControler::phase=normal;
 MKOutput<double>* UIControler::connectionSource=nullptr;
 
@@ -39,7 +42,6 @@ MKNode* UIControler::getNode(QWidget *widget){
 }
 
 QWidget* UIControler::getWidget(MKNode *node){
-    std::cout<<node<<std::endl;
     for (auto& element : UIControler::activeNodes) {
         if(element.second==node){
             return element.first;
@@ -77,3 +79,18 @@ void UIControler::initializeConnectingPhase(MKOutput<double>* origin){
     UIControler::phase=connecting;
     UIControler::connectionSource=origin;
 }
+
+void UIControler::addLine(MKLine* line){
+    activeLines.insert(line);
+}
+
+void UIControler::destroyLine(MKLine* line){
+    activeLines.erase(line);
+}
+
+
+void UIControler::setSecondWindow(secondwindow* sw){
+    secondWin=sw;
+}
+
+
