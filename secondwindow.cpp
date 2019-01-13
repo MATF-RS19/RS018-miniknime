@@ -3,6 +3,8 @@
 #include "uicontroler.h"
 #include "iostream"
 #include "mknodespec.h"
+#include "mkcsvreader.h"
+#include "mkknn.h"
 
 
 #include <QtWidgets>
@@ -81,6 +83,7 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
             std::cout<<"graph node type: "<<node->type<<std::endl;
             if(node->type == "csvr")
             {
+                node = new MKCSVReader;
                 CsvReaderDialog dialog;
                 dialog.node = node;
                 dialog.setModal(true);
@@ -103,6 +106,13 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
             else if(node->type == "norm")
             {
                 mknormalizationdialog dialog;
+                dialog.node = node;
+                dialog.setModal(true);
+                dialog.exec();
+            }
+            else if(node->type == "knn")
+            {
+                MKKnn dialog;
                 dialog.node = node;
                 dialog.setModal(true);
                 dialog.exec();
