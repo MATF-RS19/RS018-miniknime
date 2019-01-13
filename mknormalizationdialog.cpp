@@ -13,7 +13,3 @@ mknormalizationdialog::~mknormalizationdialog()
     delete ui;
 }
 
-void mknormalizationdialog::on_connectButtun_clicked()
-{
-
-}

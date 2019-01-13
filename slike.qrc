@@ -1,9 +1,9 @@
 <RCC>
     <qresource prefix="/">
+        <file>partition.png</file>
         <file>norm.png</file>
         <file>csv.png</file>
-        <file>partition.png</file>
-        <file>linear.png</file>
-        <file>naive.png</file>
+        <file>mlp.png</file>
+        <file>neural.png</file>
     </qresource>
 </RCC>

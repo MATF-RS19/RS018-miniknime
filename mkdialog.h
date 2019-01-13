@@ -19,7 +19,6 @@ public:
     MKNode* node=nullptr;
 
 private slots:
-    void on_outputButton_clicked();
 
     void on_connectButton_clicked();
 

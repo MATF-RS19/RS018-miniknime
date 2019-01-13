@@ -17,15 +17,11 @@ MKDialog::~MKDialog()
     delete ui;
 }
 
-void MKDialog::on_outputButton_clicked()
-{
-    UIControler::phase=connecting;
-    UIControler::connectionSource=&(node->m_outputs[0]);    
-    close();
-    UIControler::secondWin->drawLines();
-}
-
 void MKDialog::on_connectButton_clicked()
 {
+    UIControler::phase=connecting;
+    UIControler::connectionSource=&(node->m_outputs[0]);
+    close();
+    UIControler::secondWin->drawLines();
 
 }

@@ -15,26 +15,26 @@ MainWindow::MainWindow(QWidget *parent)
     setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
     setAcceptDrops(true);
 
-    QLabel *linearRegression = new QLabel(this);
-    linearRegression->setPixmap(QPixmap(":/linear.png"));
-    linearRegression->move(10, 10);
-    linearRegression->show();
-    linearRegression->setAttribute(Qt::WA_DeleteOnClose);
-    UIControler::addOriginNode(linearRegression,"lr");
+    QLabel *mlpRegression = new QLabel(this);
+    mlpRegression->setPixmap(QPixmap(":/mlp.png"));
+    mlpRegression->move(10, 10);
+    mlpRegression->show();
+    mlpRegression->setAttribute(Qt::WA_DeleteOnClose);
+    UIControler::addOriginNode(mlpRegression,"mlpr");
 
-    QLabel *naiveBayesClassifier = new QLabel(this);
-    naiveBayesClassifier->setPixmap(QPixmap(":/naive.png"));
-    naiveBayesClassifier->move(10, 40);
-    naiveBayesClassifier->show();
-    naiveBayesClassifier->setAttribute(Qt::WA_DeleteOnClose);
-    UIControler::addOriginNode(naiveBayesClassifier,"nbc");
+    QLabel *neuralNetwork = new QLabel(this);
+    neuralNetwork->setPixmap(QPixmap(":/neural.png"));
+    neuralNetwork->move(10, 40);
+    neuralNetwork->show();
+    neuralNetwork->setAttribute(Qt::WA_DeleteOnClose);
+    UIControler::addOriginNode(neuralNetwork,"nn");
 
-    QLabel *partitionClustering = new QLabel(this);
-    partitionClustering->setPixmap(QPixmap(":/partition.png"));
-    partitionClustering->move(10, 70);
-    partitionClustering->show();
-    partitionClustering->setAttribute(Qt::WA_DeleteOnClose);
-    UIControler::addOriginNode(partitionClustering,"pc");
+    QLabel *partitionNode = new QLabel(this);
+    partitionNode->setPixmap(QPixmap(":/partition.png"));
+    partitionNode->move(10, 70);
+    partitionNode->show();
+    partitionNode->setAttribute(Qt::WA_DeleteOnClose);
+    UIControler::addOriginNode(partitionNode,"pn");
 
     QLabel *normalization = new QLabel(this);
     normalization->setPixmap(QPixmap(":/norm.png"));
