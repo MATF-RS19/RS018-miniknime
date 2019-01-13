@@ -141,7 +141,6 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
         auto mkIn=targetNode->getFirstFreeInput();
 
         if(mkIn!=nullptr){
-            std::cout<<"connected: "<<UIControler::connectionSource->parent->type<<"<->"<<mkIn->parent->type<<std::endl;
             auto source=UIControler::getWidget(UIControler::connectionSource->parent);
 
             appendLine(source,child,UIControler::connectionSource,mkIn);
@@ -213,9 +212,14 @@ void secondwindow::dropEvent(QDropEvent *event)
         newIcon->setAttribute(Qt::WA_DeleteOnClose);
 
         if(currentlyDraggedNode==nullptr){
+            //ovde treba da se konstruise odgovarajuci node
             auto node=new MKTestNode1_1();
+
             node->type=MainWindow::draggedNodeType;
             UIControler::addNode(newIcon, node);
+
+            //switch(node->type)
+            UIControler::thirdWin->setPlainText("this be node");
         }else{
             UIControler::amendNode(newIcon,currentlyDraggedNode);
         }

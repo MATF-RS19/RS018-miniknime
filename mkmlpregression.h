@@ -21,4 +21,4 @@ public:
                   double momentum = 0.8);
 
 };
-#endif // MKMLPREGRdouble momentum)ESSION_H
+#endif // MKMLPREGRESSION_H

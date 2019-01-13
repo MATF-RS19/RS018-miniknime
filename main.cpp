@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
     UIControler::setSecondWindow(sw);
     horizontalLayout->addWidget(sw);
     QPlainTextEdit *textArea = new QPlainTextEdit;
+    UIControler::setThirdWindow(textArea);
     textArea->setPlaceholderText("Here will be description of the algorithm you choose.");
     textArea->setMinimumSize(400, 400);
     horizontalLayout->addWidget(textArea);
@@ -45,7 +46,7 @@ int main(int argc, char *argv[])
 // example workflow
 // --------------------------------------------------
     MKCSVReader reader {};
-    reader.readFromCSV("./datasets/auto-mpg.csv");
+    reader.readFromCSV("datasets/auto-mpg.csv");
 
     MKNormalization norm {};
     reader.m_outputs[0].establishConnection(norm.m_inputs[0]);

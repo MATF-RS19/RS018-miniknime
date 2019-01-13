@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include <QWidget>
+#include <QPlainTextEdit>
+
 #include <mknode.h>
 #include <vector>
 #include <string>
@@ -39,6 +41,8 @@ public:
 
     static secondwindow* secondWin;
     static void setSecondWindow(secondwindow* sw);
+    static QPlainTextEdit* thirdWin;
+    static void setThirdWindow(QPlainTextEdit* pte);
 
 private:
     static std::vector<std::pair<QWidget*, MKNode*>> activeNodes;
