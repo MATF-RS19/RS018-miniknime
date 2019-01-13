@@ -2,6 +2,7 @@
 #include "secondwindow.h"
 #include "mknormalization.h"
 #include "mknode.h"
+#include "mkmlpregression.h"
 #include "mkcsvreader.h"
 #include "mkpartition.h"
 #include "mknodespec.h"
@@ -41,6 +42,27 @@ int main(int argc, char *argv[])
     mainWidget.setWindowTitle(QObject::tr("MiniKnime Proba"));
     mainWidget.show();
 
+// example workflow
+// --------------------------------------------------
+    MKCSVReader reader {};
+    reader.readFromCSV("./datasets/auto-mpg.csv");
+
+    MKNormalization norm {};
+    reader.m_outputs[0].establishConnection(norm.m_inputs[0]);
+
+    norm.process_data();
+
+    MKPartition part {};
+    norm.m_outputs[0].establishConnection((part.m_inputs[0]));
+    part.process_data();
+
+    MKMLPRegression net {};
+    part.m_outputs[0].establishConnection(net.m_inputs[0]);
+    part.m_outputs[1].establishConnection(net.m_inputs[1]);
+
+    net.trainNet(6, 3, 3);
+
+// --------------------------------------------------
 
     return app.exec();
 }
@@ -50,20 +72,6 @@ void localTest001(){
     // d1        d2
     //    ->s2->
 
-    MKCSVReader reader {};
-    reader.readFromCSV("../../auto-mpg.csv");
-
-    MKNormalization norm {};
-    reader.m_outputs[0].establishConnection(norm.m_inputs[0]);
-    reader.m_outputs[0].printData();
-
-    norm.process_data();
-    norm.m_outputs[0].printData();
-
-    MKPartition part {};
-    norm.m_outputs[0].establishConnection((part.m_inputs[0]));
-    part.process_data();
-    part.m_outputs[1].printData();
 
     MKTestNode2_2 double1 {};
     MKTestNode1_1 single1 {};
