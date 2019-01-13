@@ -18,6 +18,7 @@ public:
 
     static void amendNode(QWidget *widget, MKNode *node);
     static void addNode(QWidget *widget, MKNode *node);
+    static QWidget* getWidget(MKNode *node);
     static MKNode* getNode(QWidget *widget);
     static void amendOriginNode(QWidget *widget, std::string type);
     static void addOriginNode(QWidget *widget, std::string type);

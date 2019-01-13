@@ -9,6 +9,8 @@
 
 #undef DEBUG
 
+bool secondwindow::paintLine=false;
+
 secondwindow::secondwindow(QWidget *parent)
     : QFrame(parent)
 {
@@ -78,17 +80,25 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
             std::cout<<"something went wrong, connection source not set"<<std::endl;
             return;
         }
-        auto mkIn=UIControler::getNode(child)->getFirstFreeInput();
+        auto targetNode=UIControler::getNode(child);
+        if(UIControler::connectionSource->parent==targetNode){
+            std::cout<<"cannot connect node to self"<<std::endl;
+            return;
+        }
+        auto mkIn=targetNode->getFirstFreeInput();
 
         if(mkIn!=nullptr){
             std::cout<<"connected: "<<UIControler::connectionSource->parent->type<<"<->"<<mkIn->parent->type<<std::endl;
+            auto source=UIControler::getWidget(UIControler::connectionSource->parent);
+
+            paintLines(source,child,UIControler::connectionSource->positionIndex,mkIn->positionIndex);
             UIControler::connectionSource->establishConnection(*mkIn);
             UIControler::connectionSource=nullptr;
-            UIControler::phase=normal;
+            UIControler::phase=normal;            
+
         }else{
             std::cout<<"target node has no free inputs"<<std::endl;
         }
-
     }
 }
 
@@ -174,7 +184,6 @@ void secondwindow::dropEvent(QDropEvent *event)
         event->ignore();
     }
 }
-
 
 
 

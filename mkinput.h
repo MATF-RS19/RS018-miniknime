@@ -13,9 +13,10 @@ class MKInput
 {
 public:
 
-    MKInput(MKNode* par)
+    MKInput(MKNode* par,int positionIndex)
         : parent (par)
         , connectedTo (nullptr)
+        , positionIndex(positionIndex)
     {
     }
 
@@ -26,10 +27,24 @@ public:
 
     void establishConnection(MKOutput<T>& other, bool isEstablishedOnOtherEnd = false)
     {
+        if (false == isEstablishedOnOtherEnd){
+            breakConnection();
+        }
         connectedTo = &other;
         if (false == isEstablishedOnOtherEnd)
-        {
+        {            
             other.establishConnection(*this, true);
+        }
+    }
+
+    void breakConnection(bool isEstablishedOnOtherEnd = false)
+    {
+        if(connectedTo!=nullptr){
+            if (isEstablishedOnOtherEnd==false)
+            {
+                connectedTo->breakConnection(true);
+            }
+            connectedTo=nullptr;
         }
     }
 
@@ -47,8 +62,7 @@ public:
 
     MKOutput<T>* connectedTo;
     MKNode* parent;
-
-
+    int positionIndex;
 };
 
 #endif // MKINPUT_H

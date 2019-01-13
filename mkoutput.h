@@ -11,11 +11,9 @@ template <typename T>
 class MKOutput
 {
 public:
-    MKOutput(MKNode* par)
+    MKOutput(MKNode* par, int positionIndex)
     {
-        //samo za proveru
-        // #TODO azurirati ovaj konstruktor
-        std::vector<std::vector<double>> v (4, std::vector<double>(4, 3));
+        this->positionIndex=positionIndex;
         parent = par;
         auto data=new MKData<double>();
         data->data=std::vector<std::vector<double>>(1, std::vector<double>(1));
@@ -29,10 +27,25 @@ public:
 
     void establishConnection(MKInput<T>& other, bool isEstablishedOnOtherEnd = false)
     {
+        if (false == isEstablishedOnOtherEnd){
+            breakConnection();
+        }
         connectedTo = &other;
         if (false == isEstablishedOnOtherEnd)
         {
             other.establishConnection(*this, true);
+        }
+    }
+
+    void breakConnection(bool isEstablishedOnOtherEnd = false)
+    {
+
+        if(connectedTo!=nullptr){
+            if (isEstablishedOnOtherEnd==false)
+            {
+                connectedTo->breakConnection(true);
+            }
+            connectedTo=nullptr;
         }
     }
 
@@ -49,6 +62,7 @@ public:
 
     MKNode* parent;
     MKInput<T>* connectedTo;
+    int positionIndex;
     bool isContentValid=false;
 
 private:

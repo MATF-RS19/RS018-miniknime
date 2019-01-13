@@ -13,10 +13,10 @@ MKNode::MKNode()
 MKNode::MKNode(int ins, int outs)
 {
     for(int i=0; i<ins;i++){
-        m_inputs.push_back(MKInput<double>(this));
+        m_inputs.push_back(MKInput<double>(this,i));
     }
     for(int i=0; i<outs;i++){
-        m_outputs.push_back(MKOutput<double>(this));
+        m_outputs.push_back(MKOutput<double>(this,i));
     }
 }
 

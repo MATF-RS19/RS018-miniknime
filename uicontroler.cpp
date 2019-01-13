@@ -38,6 +38,17 @@ MKNode* UIControler::getNode(QWidget *widget){
     return nullptr;
 }
 
+QWidget* UIControler::getWidget(MKNode *node){
+    std::cout<<node<<std::endl;
+    for (auto& element : UIControler::activeNodes) {
+        if(element.second==node){
+            return element.first;
+        }
+    }
+    return nullptr;
+}
+
+
 void UIControler::amendOriginNode(QWidget *widget, std::string type){
     for (auto& element : UIControler::originNodes) {
         if(element.second==type){
