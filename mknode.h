@@ -7,6 +7,8 @@
 #include "mkinput.h"
 #include "mkoutput.h"
 
+// Base class for node
+
 class MKNode
 {
 public:

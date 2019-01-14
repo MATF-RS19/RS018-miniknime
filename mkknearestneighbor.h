@@ -3,6 +3,11 @@
 
 #include "mknode.h"
 
+
+/*
+ * Specialization of MKNode that implements KNN algorithm
+ */
+
 class MKKNearestNeighbor : public MKNode
 {
 public:

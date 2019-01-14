@@ -3,6 +3,12 @@
 
 #include "mknode.h"
 
+
+/*
+ * Specialization of MKNode class that performs dataset partitioning
+ * i.e partitions data into training and test data
+ *
+*/
 class MKPartition : public MKNode
 {
 public:

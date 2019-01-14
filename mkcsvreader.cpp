@@ -72,6 +72,10 @@ bool MKCSVReader::process_data()
     return true;
 }
 
+/*
+ * Reads data from file and sends it to MKOutput
+ *
+*/
 bool MKCSVReader::readFromCSV(const std::string path)
 {
     CSVRow row;

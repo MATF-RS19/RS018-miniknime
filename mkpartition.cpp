@@ -5,6 +5,13 @@
 #include <cmath>
 #include <random>
 
+
+
+/*
+ * Default constructor creates MKPartition instance
+ * with 1 MKInput and 2 MKOutputs
+ *
+*/
 MKPartition::MKPartition()
     : MKNode (1, 2)
 {
@@ -24,8 +31,6 @@ bool MKPartition::process_data()
     int cross_point = std::rint((7.0 / 10) * local_data.data.size());
     auto cross_iter = local_data.data.begin() + cross_point;
 
-//    std::vector<std::vector<double>> tmp1 (local_data.data.begin(), cross_iter);
-//    std::vector<std::vector<double>> tmp2 (cross_iter, local_data.data.end());
     MKData<double> partition1 (std::vector<std::vector<double>> (local_data.data.begin(), cross_iter));
     MKData<double> partition2 (std::vector<std::vector<double>> (cross_iter, local_data.data.end()));
 

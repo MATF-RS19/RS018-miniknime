@@ -8,6 +8,7 @@ template <typename T> class MKInput;
 class MKNode;
 class MKLine;
 
+
 template <typename T>
 class MKOutput
 {

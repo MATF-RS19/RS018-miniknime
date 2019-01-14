@@ -6,6 +6,10 @@
 #include <iostream>
 #include <string>
 
+/*
+ * MKNode specialization for reading data from csv files
+*/
+
 class MKCSVReader : public MKNode
 {
 public:

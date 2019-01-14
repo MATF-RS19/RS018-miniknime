@@ -6,6 +6,10 @@
 
 using namespace dlib;
 
+/*
+ * Specialization of MKNode that implements MLP algorithm
+ */
+
 class MKMLPRegression : public MKNode
 {
 public:

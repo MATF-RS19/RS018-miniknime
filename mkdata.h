@@ -32,17 +32,20 @@ public:
 
     MKData(const MKData& other)
         : data (other.data)
+        , m_header (other.m_header)
     {
     }
 
     MKData(MKData&& other)
         : data (std::move(other.data))
+        , m_header (std::move(other.m_header))
     {
     }
 
     MKData& operator= (MKData other)
     {
         std::swap(other.data, data);
+        std::swap(other.m_header, m_header);
         return *this;
     }
 
