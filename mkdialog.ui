@@ -72,6 +72,19 @@
     </item>
    </layout>
   </widget>
+  <widget class="QPushButton" name="connectButton2">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>190</y>
+     <width>85</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Connect 2</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

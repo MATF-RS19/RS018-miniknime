@@ -60,6 +60,8 @@ public:
         this->content=content;
         if (connectedTo != nullptr)
             connectedTo->parent->requestProcess();
+        std::cout << "------------------------------------" << std::endl;
+        printData();
 
     }
 

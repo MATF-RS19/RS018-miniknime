@@ -52,11 +52,11 @@ int main(int argc, char *argv[])
 //    knn.classify(3, 4, xs);
 
 
-    MKNormalization norm {};
-    reader.m_outputs[0].establishConnection(norm.m_inputs[0]);
-    std::cout << "---------------------NORM--------------" << std::endl;
-    norm.process_data();
-    norm.m_outputs[0].printData();
+   // MKNormalization norm {};
+   // reader.m_outputs[0].establishConnection(norm.m_inputs[0]);
+   // std::cout << "---------------------NORM--------------" << std::endl;
+   // norm.process_data();
+   // norm.m_outputs[0].printData();
 
 
    // MKPartition part {};

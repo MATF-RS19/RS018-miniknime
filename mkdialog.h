@@ -21,6 +21,8 @@ public:
 private slots:
     void on_connectButton_clicked();
 
+    void on_connectButton2_clicked();
+
 public slots:
     double on_submitButton_clicked();
 
