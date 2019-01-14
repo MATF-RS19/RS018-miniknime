@@ -58,6 +58,9 @@ public:
     void pushData(MKData<double>* content) {
         isContentValid=true;
         this->content=content;
+        if (connectedTo != nullptr)
+            connectedTo->parent->requestProcess();
+
     }
 
     void printData()

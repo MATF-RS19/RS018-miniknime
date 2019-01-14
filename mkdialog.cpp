@@ -31,3 +31,11 @@ double MKDialog::on_submitButton_clicked()
     double tmp = ui->sizeValue->text().toDouble();
     return tmp;
 }
+
+void MKDialog::on_connectButton2_clicked()
+{
+    UIControler::phase=connecting;
+    UIControler::connectionSource=&(node->m_outputs[1]);
+    close();
+    UIControler::secondWin->drawLines();
+}

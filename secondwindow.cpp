@@ -122,6 +122,7 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
                     MKPartition *temp = new MKPartition();
                     double tmp = dialog.on_submitButton_clicked();
                     temp->partition(tmp);
+                    temp->m_outputs[0].printData();
 
                 }
                 else if(node->type == "norm")

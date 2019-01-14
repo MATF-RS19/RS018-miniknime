@@ -44,19 +44,20 @@ int main(int argc, char *argv[])
 
 // example workflow
 // --------------------------------------------------
-//    MKCSVReader reader {};
-//    reader.readFromCSV("../../iris.csv");
-//    reader.m_outputs[0].printData();
+    MKCSVReader reader {};
+    reader.readFromCSV("../../numeric_iris.csv");
+    reader.m_outputs[0].printData();
 //    MKKNearestNeighbor knn {};
 //    std::vector<double> xs {6.5, 3, 5.4, 2.2, 2};
 //    knn.classify(3, 4, xs);
 
 
-//    MKNormalization norm {};
-//    reader.m_outputs[0].establishConnection(norm.m_inputs[0]);
-//    norm.m_outputs[0].printData();
+    MKNormalization norm {};
+    reader.m_outputs[0].establishConnection(norm.m_inputs[0]);
+    std::cout << "---------------------NORM--------------" << std::endl;
+    norm.process_data();
+    norm.m_outputs[0].printData();
 
-   // norm.process_data();
 
    // MKPartition part {};
    // norm.m_outputs[0].establishConnection((part.m_inputs[0]));
