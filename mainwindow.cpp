@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     setAcceptDrops(true);
 
     QLabel *KNN = new QLabel(this);
-    KNN->setPixmap(QPixmap(":/mlp.png"));
+    KNN->setPixmap(QPixmap(":/pattern.png"));
     KNN->move(10, 10);
     KNN->show();
     KNN->setAttribute(Qt::WA_DeleteOnClose);
@@ -27,7 +27,7 @@ MainWindow::MainWindow(QWidget *parent)
     neuralNetwork->move(10, 40);
     neuralNetwork->show();
     neuralNetwork->setAttribute(Qt::WA_DeleteOnClose);
-    UIControler::addOriginNode(neuralNetwork,"nn");
+    UIControler::addOriginNode(neuralNetwork, "nn");
 
     QLabel *partitionNode = new QLabel(this);
     partitionNode->setPixmap(QPixmap(":/partition.png"));
@@ -41,14 +41,14 @@ MainWindow::MainWindow(QWidget *parent)
     normalization->move(10, 100);
     normalization->show();
     normalization->setAttribute(Qt::WA_DeleteOnClose);
-    UIControler::addOriginNode(normalization,"norm");
+    UIControler::addOriginNode(normalization, "norm");
 
     QLabel *csvReader = new QLabel(this);
     csvReader->setPixmap(QPixmap(":/csv.png"));
     csvReader->move(10, 130);
     csvReader->show();
     csvReader->setAttribute(Qt::WA_DeleteOnClose);
-    UIControler::addOriginNode(csvReader,"csvr");
+    UIControler::addOriginNode(csvReader, "csvr");
 
 }
 

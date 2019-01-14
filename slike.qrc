@@ -3,7 +3,7 @@
         <file>partition.png</file>
         <file>norm.png</file>
         <file>csv.png</file>
-        <file>mlp.png</file>
         <file>neural.png</file>
+        <file>pattern.png</file>
     </qresource>
 </RCC>
