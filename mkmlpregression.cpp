@@ -5,7 +5,7 @@
 using namespace dlib;
 
 MKMLPRegression::MKMLPRegression()
-    : MKNode (2, 1)
+    : MKNode (2, 0)
 {
 }
 
@@ -27,7 +27,7 @@ void MKMLPRegression::trainNet(long perceptronsInInputLayer,
     std::vector<std::vector<double>>& X = local_training_data.data;
 
     if (X[0].size() - 1 != perceptronsInInputLayer ) {
-        std::cout << "Broj ulaznih perceptrona mora da odgovara velicini instance" << std::endl;
+        std::cout << "Number of input perceptrons must be equal to the size of instance." << std::endl;
         return;
     }
 

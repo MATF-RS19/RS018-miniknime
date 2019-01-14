@@ -21,6 +21,9 @@ public:
 private slots:
     void on_connectButton_clicked();
 
+public slots:
+    std::vector<double> on_submitButton_clicked();
+
 private:
     Ui::mkknndialog *ui;
 };

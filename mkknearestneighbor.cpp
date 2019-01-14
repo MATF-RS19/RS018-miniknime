@@ -13,7 +13,7 @@ bool comparsion(const std::pair<double, double>& a,
 }
 
 MKKNearestNeighbor::MKKNearestNeighbor()
-    : MKNode (1, 0)
+    : MKNode (2, 0)
 {
 }
 
@@ -25,8 +25,13 @@ bool MKKNearestNeighbor::process_data()
 
 bool MKKNearestNeighbor::classify(unsigned int k,
                                   unsigned long labelIndex,
-                                  std::vector<double> p)
+                                  double x,
+                                  double y)
 {
+
+    std::vector<double> p (2);
+    p.push_back(x);
+    p.push_back(y);
 
     MKData<double> local_data = m_inputs[0].pullData().second;
 

@@ -5,13 +5,15 @@
 #include "mknodespec.h"
 #include "mkcsvreader.h"
 #include "mkknndialog.h"
-
-
+#include "mkknearestneighbor.h"
+#include <mkpartition.h>
 #include <QtWidgets>
 #include <csvreaderdialog.h>
 #include <mkdialog.h>
 #include <mkneuraldialog.h>
 #include <mknormalizationdialog.h>
+#include <mkmlpregression.h>
+#include <mknormalization.h>
 
 
 #undef DEBUG
@@ -90,6 +92,7 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
 
                 MKCSVReader *temp = new MKCSVReader();
                 temp->readFromCSV(dialog.on_browseButton_clicked());
+                temp->m_outputs[0].printData();
             }
             else if (node->type == "nn")
             {
@@ -97,6 +100,11 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
                 dialog.node = node;
                 dialog.setModal(true);
                 dialog.exec();
+
+                MKMLPRegression *temp = new MKMLPRegression();
+                std::vector<double> tmp = dialog.on_submitButton_clicked();
+                temp->trainNet(tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5]);
+
             }
             else if(node->type == "pn")
             {
@@ -104,6 +112,11 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
                 dialog.node=node;
                 dialog.setModal(true);
                 dialog.exec();
+
+                MKPartition *temp = new MKPartition();
+                double tmp = dialog.on_submitButton_clicked();
+                temp->partition(tmp);
+
             }
             else if(node->type == "norm")
             {
@@ -111,6 +124,9 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
                 dialog.node = node;
                 dialog.setModal(true);
                 dialog.exec();
+
+                MKNormalization *temp = new MKNormalization();
+                temp->process_data();
             }
             else if(node->type == "knn")
             {
@@ -118,17 +134,11 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
                 dialog.node = node;
                 dialog.setModal(true);
                 dialog.exec();
+
+                MKKNearestNeighbor *temp = new MKKNearestNeighbor();
+                std::vector<double> tmp = dialog.on_submitButton_clicked();
+                temp->classify(tmp[0], tmp[1], tmp[2], tmp[3]);
             }
-
-
-    #ifdef DEBUG
-            if(node==nullptr){
-                std::cout<<"null"<<std::endl;
-            }else{
-                std::cout<<node<<std::endl;
-            }
-    #endif
-
         }
     }else{
         if(QApplication::mouseButtons() & Qt::RightButton){

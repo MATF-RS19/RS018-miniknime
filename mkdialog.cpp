@@ -25,3 +25,9 @@ void MKDialog::on_connectButton_clicked()
     UIControler::secondWin->drawLines();
 
 }
+
+double MKDialog::on_submitButton_clicked()
+{
+    double tmp = ui->sizeValue->text().toDouble();
+    return tmp;
+}

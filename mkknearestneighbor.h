@@ -14,7 +14,7 @@ public:
     MKKNearestNeighbor();
 
     bool process_data() override;
-    bool classify(unsigned int k, unsigned long labelIndex, std::vector<double> p);
+    bool classify(unsigned int k, unsigned long labelIndex, double x, double y);
 };
 
 #endif // MKKNEARESTNEIGHBOR_H

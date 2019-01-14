@@ -98,7 +98,7 @@ bool MKCSVReader::readFromCSV(const std::string path)
         std::transform(tmp.begin(),
                        tmp.end(),
                        x.begin(),
-                       [] (std::string s) { return std::atof(s.c_str()); });
+                       [] (std::string s) -> double { return std::atof(s.c_str()); });
 
         X.push_back(x);
     }

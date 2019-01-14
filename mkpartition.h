@@ -15,6 +15,7 @@ public:
     MKPartition();
 
     bool process_data() override;
+    bool partition(double ratio);
 };
 
 #endif // MKPARTITION_H

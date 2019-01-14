@@ -19,9 +19,9 @@ public:
     MKNode* node=nullptr;
 
 public slots:
-
     std::string on_browseButton_clicked();
 
+private slots:
     void on_connectButton_clicked();
 
 private:
