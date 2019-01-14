@@ -4,7 +4,7 @@
 #include "iostream"
 #include "mknodespec.h"
 #include "mkcsvreader.h"
-#include "mkknn.h"
+#include "mkknndialog.h"
 
 
 #include <QtWidgets>
@@ -83,11 +83,13 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
             std::cout<<"graph node type: "<<node->type<<std::endl;
             if(node->type == "csvr")
             {
-                node = new MKCSVReader;
                 CsvReaderDialog dialog;
                 dialog.node = node;
                 dialog.setModal(true);
                 dialog.exec();
+
+                MKCSVReader *temp = new MKCSVReader();
+                temp->readFromCSV(dialog.on_browseButton_clicked());
             }
             else if (node->type == "nn")
             {
@@ -112,7 +114,7 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
             }
             else if(node->type == "knn")
             {
-                MKKnn dialog;
+                mkknndialog dialog;
                 dialog.node = node;
                 dialog.setModal(true);
                 dialog.exec();
@@ -164,6 +166,7 @@ void secondwindow::mousePressEvent(QMouseEvent *event)
     }
 }
 
+
 void secondwindow::dragEnterEvent(QDragEnterEvent *event)
 {
     if(event->mimeData()->hasFormat("application/x-dnditemdata"))
@@ -183,7 +186,7 @@ void secondwindow::dragEnterEvent(QDragEnterEvent *event)
         event->ignore();
     }
 }
-
+//Function that moves node from one window to another
 void secondwindow::dragMoveEvent(QDragMoveEvent *event)
 {
     if(event->mimeData()->hasFormat("application/x-dnditemdata"))
@@ -204,6 +207,7 @@ void secondwindow::dragMoveEvent(QDragMoveEvent *event)
     }
 }
 
+//Function that enables nodes to be dragged into this window and displays text into third window
 void secondwindow::dropEvent(QDropEvent *event)
 {    
     if(event->mimeData()->hasFormat("application/x-dnditemdata"))
@@ -228,8 +232,35 @@ void secondwindow::dropEvent(QDropEvent *event)
             node->type=MainWindow::draggedNodeType;
             UIControler::addNode(newIcon, node);
 
-            //switch(node->type)
-            UIControler::thirdWin->setPlainText("this be node");
+
+             if(node->type == "knn")
+             {
+                    UIControler::thirdWin->setPlainText("KNN algorithm. It is algorithm for classifying. An object is classified by a plurality vote of its neighbors, "
+                                                        "with the object being assigned "
+                                                        "to the class most common among its k nearest neighbors "
+                                                        "(k is a positive integer, typically small). If k = 1, then the object is simply assigned to the "
+                                                        "class of that single nearest neighbor.");
+             }
+             else if (node->type == "norm")
+             {
+                 UIControler::thirdWin->setPlainText("Normalization of values measured on different scales to a notionally common scale, often prior to averaging.");
+             }
+             else if(node->type == "pn")
+             {
+                 UIControler::thirdWin->setPlainText("Partioning of the input data onto test and training data in given ratio.");
+             }
+             else if(node->type == "csvr")
+             {
+                 UIControler::thirdWin->setPlainText("Reading data values from a csv file.");
+             }
+             else if (node->type == "nn")
+             {
+                 UIControler::thirdWin->setPlainText("Multi-layer Perceptron (MLP) is a supervised learning algorithm that learns a function f(): R^m -> R^o by training on a dataset,"
+                                                     " where m is the number of dimensions for input and o is the number of dimensions for output. Given a set of features and a target ,"
+                                                     " it can learn a non-linear function approximator for either classification or regression");
+             }
+
+
         }else{
             UIControler::amendNode(newIcon,currentlyDraggedNode);
         }

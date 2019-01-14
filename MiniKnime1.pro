@@ -47,8 +47,8 @@ SOURCES += \
     mkneuraldialog.cpp \
     mkmlpregression.cpp \
     dlib-19.16/dlib-19.16/dlib/all/source.cpp \
-    mkknearestneighbor.cpp
-    mkknn.cpp
+    mkknearestneighbor.cpp \
+    mkknndialog.cpp
 
 
 HEADERS += \
@@ -71,8 +71,8 @@ HEADERS += \
     mknormalizationdialog.h \
     mkneuraldialog.h \
     mkmlpregression.h \
-    mkknearestneighbor.h
-    mkknn.h
+    mkknearestneighbor.h \
+    mkknndialog.h
 
 
 FORMS += \
@@ -81,7 +81,7 @@ FORMS += \
     csvreaderdialog.ui \
     mknormalizationdialog.ui \
     mkneuraldialog.ui \
-    mkknn.ui
+    mkknndialog.ui
 
 
 # Default rules for deployment.

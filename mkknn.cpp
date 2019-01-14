@@ -1,24 +1,19 @@
 #include "mkknn.h"
 #include "ui_mkknn.h"
-#include "secondwindow.h"
 
-MKKnn::MKKnn(QWidget *parent) :
+mkknn::mkknn(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::MKKnn)
+    ui(new Ui::mkknn)
 {
     ui->setupUi(this);
 }
 
-MKKnn::~MKKnn()
+mkknn::~mkknn()
 {
     delete ui;
 }
 
-void MKKnn::on_connectButton_clicked()
+void mkknn::on_connectButton_clicked()
 {
-    UIControler::phase=connecting;
-    UIControler::connectionSource=&(node->m_outputs[0]);
-    close();
-    UIControler::secondWin->drawLines();
 
 }

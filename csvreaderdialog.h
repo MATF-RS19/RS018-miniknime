@@ -18,9 +18,9 @@ public:
     ~CsvReaderDialog();
     MKNode* node=nullptr;
 
-private slots:
+public slots:
 
-    void on_browseButton_clicked();
+    std::string on_browseButton_clicked();
 
     void on_connectButton_clicked();
 

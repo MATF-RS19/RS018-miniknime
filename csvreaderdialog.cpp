@@ -15,10 +15,11 @@ CsvReaderDialog::~CsvReaderDialog()
     delete ui;
 }
 
-void CsvReaderDialog::on_browseButton_clicked()
+std::string CsvReaderDialog::on_browseButton_clicked()
 {
     QString s = QFileDialog::getOpenFileName(this, "Open file", QString(), "All files (*.*)");
     ui->lineEdit->setText(s);
+    return s.toStdString();
 }
 
 
