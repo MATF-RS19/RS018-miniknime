@@ -8,6 +8,8 @@
 
 std::string MainWindow::draggedNodeType="";
 
+
+//Creates left window and initalizes nodes
 MainWindow::MainWindow(QWidget *parent)
     : QFrame (parent)
 {
@@ -52,6 +54,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 }
 
+//Enables dragging of nodes on left mouse click
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
 
@@ -97,6 +100,8 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     }
 }
 
+
+//Enables node to be dragged into another window
 void MainWindow::dragEnterEvent(QDragEnterEvent *event)
 {
     if(event->mimeData()->hasFormat("application/x-dnditemdata"))

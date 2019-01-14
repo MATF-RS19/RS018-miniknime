@@ -4,6 +4,7 @@
 
 using namespace dlib;
 
+//Two inputs, one for training data, second for test data
 MKMLPRegression::MKMLPRegression()
     : MKNode (2, 0)
 {
@@ -14,6 +15,7 @@ bool MKMLPRegression::process_data()
     return true;
 }
 
+// Trains MLP and outputs predictions
 void MKMLPRegression::trainNet(long perceptronsInInputLayer,
                                long perceptronsInFirstHiddenLayer,
                                long perceptronsInSecondHiddenLayer,
@@ -31,8 +33,8 @@ void MKMLPRegression::trainNet(long perceptronsInInputLayer,
         return;
     }
 
-    // vektor kolona
-    // za dimenziju manji od instance
+    // Column vector
+    // one dimension smaller then instance
     matrix<double> m (perceptronsInInputLayer, 1);
 
     mlp::kernel_1a_c net(perceptronsInInputLayer,

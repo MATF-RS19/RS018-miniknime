@@ -15,6 +15,7 @@ CsvReaderDialog::~CsvReaderDialog()
     delete ui;
 }
 
+//Enables browsing of files and chosing file from file system
 std::string CsvReaderDialog::on_browseButton_clicked()
 {
     QString s = QFileDialog::getOpenFileName(this, "Open file", QString(), "All files (*.*)");
@@ -22,7 +23,7 @@ std::string CsvReaderDialog::on_browseButton_clicked()
     return s.toStdString();
 }
 
-
+//Connects node to another node
 void CsvReaderDialog::on_connectButton_clicked()
 {
     UIControler::phase=connecting;

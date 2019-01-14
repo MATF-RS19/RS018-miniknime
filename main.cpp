@@ -21,18 +21,16 @@
 #include <iostream>
 
 
-
+//Starts main window
 int main(int argc, char *argv[])
 {
     UIControler();
     QApplication app(argc, argv);
 
-    std::cout<<"hi"<<std::endl;
-
     QWidget mainWidget;
     QHBoxLayout *horizontalLayout = new QHBoxLayout(&mainWidget);
     horizontalLayout->addWidget(new MainWindow);
-    auto sw=new secondwindow;
+    auto sw = new secondwindow;
     UIControler::setSecondWindow(sw);
     horizontalLayout->addWidget(sw);
     QPlainTextEdit *textArea = new QPlainTextEdit;
@@ -46,17 +44,17 @@ int main(int argc, char *argv[])
 
 // example workflow
 // --------------------------------------------------
-    MKCSVReader reader {};
-    reader.readFromCSV("../../iris.csv");
-    reader.m_outputs[0].printData();
+//    MKCSVReader reader {};
+//    reader.readFromCSV("../../iris.csv");
+//    reader.m_outputs[0].printData();
 //    MKKNearestNeighbor knn {};
 //    std::vector<double> xs {6.5, 3, 5.4, 2.2, 2};
 //    knn.classify(3, 4, xs);
 
 
-    MKNormalization norm {};
-    reader.m_outputs[0].establishConnection(norm.m_inputs[0]);
-    norm.m_outputs[0].printData();
+//    MKNormalization norm {};
+//    reader.m_outputs[0].establishConnection(norm.m_inputs[0]);
+//    norm.m_outputs[0].printData();
 
    // norm.process_data();
 
